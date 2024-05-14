@@ -1,36 +1,30 @@
-# Chirex.1.0
-> Sistem Pakar Diagnosa Penyakit Pada Ayam Menggunakan Metode Certainty Factor Berbasis Website Responsive.
+# Busuk Tongkol Jagung
+> PENERAPAN SISTEM PAKAR DALAM MENGIDENTIFIKASI PENYAKIT BUSUK TONGKOL PADA TANAMAN JAGUNG MENGGUNAKAN METODE CERTAINTY FACTOR BERBASIS WEB DI PT TAZAR GUNA MANDIRI
 >
 
 
 ## Berikut tampilan sistem yang di buat.
 
 * Home
-
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Home%201.png)
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Home%202.png)
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Home%203.png)
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Home%205.png)
+///
 
 * Admin
-
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Admin%201.png)
-![alt text](https://github.com/januriawan/Chirex.1.0/blob/master/Admin%202.png)
+//
 
 ## Configure
 
-Gunakan XAMPP versi <b>PHP 7.4.9(*)</b> & <b>10.4.14-MariaDB</b> : setting nama database anda di file config.php 
+Gunakan XAMPP versi <b>PHP 8(*)</b> & <b>10.4.14-MariaDB</b> : setting nama database anda di file config.php 
 ```<?php
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "spkayam";
+$database = "db_cftongkol";
 
 mysql_connect($server,$username,$password) or die("Koneksi gagal");
 mysql_select_db($database) or die("Maaf, Database tidak bisa dibuka");
 ?>
 ```
-Login dengan /chirex/formlogin 
+Login Admin
 Username : <b>admin</b> 
 Password : <b>admin</b>
 ## Formula yang digunakan:
@@ -98,36 +92,25 @@ tersebut di atas memiliki nilai Certainty Factor ( CF) sebesar 0,67
 
 Semoga hasil karya ini dapat berguna serta bermanfaat bagi perkembangan Teknologi dan Informasi pada khususnya. Serta sebagai kajian bagi mahasiswa dalam pengambilan skripsi.
 
-## Release History
-
-* 0.0.1
-    * Work in progress
-    
- * 0.0.2
-    * Updated to Php.7 by https://github.com/triannoviandi
-    
- * 0.0.3
-    * Bug Fix Update
-
 ## Meta
 
-Copyright – [@januriawan](https://twitter.com/januriawan) – januriawan@duck.com
+Copyright – [@maizan insani akbar]([https://twitter.com/januriawan](https://www.linkedin.com/in/izanmaizan/)) – izanmaizan@gmail.com
 
 Distributed under the XYZ license. See ``LICENSE`` for more information.
 
-[https://github.com/januriawan](https://github.com/januriawan/)
+[https://github.com/izanmaizan](https://github.com/izanmaizan)
 
 ## Disclaimer
 
 * Dilarang keras di perjual-belikan, source ini saya publikasi untuk keperluan belajar saja.
     * Untuk yang mau file dokumentasi / skripsi bisa request dengan menghubungi saya (gratis).
     * <b>Update</b> (Karena banyak yang meminta via Email, Sosmed dll. Mohon maaf karena keterbatasan waktu saya tidak bisa membalas, satu persatu
-    untuk itu silakan <b>download</b> di [Link Ini](https://www.scribd.com/document/431280343/Dokumentasi-Sistem-Pakar-Ayam-Skripsi)
+    untuk itu silakan <b>download</b> di Link disini
  
 ## Donation
 
 * Bagi yang ingin <b>berdonasi</b> untuk pengembangan sistem yang lain, boleh kirim ke saweria saya 
-   * Saweria.co : [Donasi Sekarang](https://saweria.co/januriawan)
+   * Saweria.co : Donasi
    * Siapapun, berapapun, saya ucapkan terimakasih sebanyak-banyaknya.
 
 
