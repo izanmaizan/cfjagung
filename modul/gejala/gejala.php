@@ -1,4 +1,4 @@
-<title>Gejala - Chirexs 1.0</title>
+<title>Gejala - T-corn</title>
 <?php
 
 session_start();
@@ -7,26 +7,26 @@ if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
 	exit();
 } else {
 	?>
-<script type="text/javascript">
-function Blank_TextField_Validator() {
-    if (text_form.nama_gejala.value == "") {
-        alert("Nama Gejala tidak boleh kosong !");
-        text_form.nama_gejala.focus();
-        return (false);
-    }
-    return (true);
-}
+	<script type="text/javascript">
+		function Blank_TextField_Validator() {
+			if (text_form.nama_gejala.value == "") {
+				alert("Nama Gejala tidak boleh kosong !");
+				text_form.nama_gejala.focus();
+				return (false);
+			}
+			return (true);
+		}
 
-function Blank_TextField_Validator_Cari() {
-    if (text_form.keyword.value == "") {
-        alert("Isi dulu keyword pencarian !");
-        text_form.keyword.focus();
-        return (false);
-    }
-    return (true);
-}
-</script>
-<?php
+		function Blank_TextField_Validator_Cari() {
+			if (text_form.keyword.value == "") {
+				alert("Isi dulu keyword pencarian !");
+				text_form.keyword.focus();
+				return (false);
+			}
+			return (true);
+		}
+	</script>
+	<?php
 	include "config/fungsi_alert.php";
 	$aksi = "modul/gejala/aksi_gejala.php";
 	switch ($_GET['act']) {

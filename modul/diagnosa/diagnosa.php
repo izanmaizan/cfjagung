@@ -1,4 +1,4 @@
-<title>Identifikasi - Haura</title>
+<title>Identifikasi - T-corn</title>
 <?php
 switch ($_GET['act']) {
 
@@ -96,7 +96,7 @@ switch ($_GET['act']) {
       // --------------------- END -------------------------
 
       echo "<div class='content'>
-	<h2 class='text text-primary'>Hasil Diagnosis &nbsp;&nbsp;<button id='print' onClick='window.print();' data-toggle='tooltip' data-placement='right' title='Klik tombol ini untuk mencetak hasil identifikasi'><i class='fa fa-print'></i> Cetak</button> </h2>
+	<h2 class='text text-primary'>Hasil Identifikasi &nbsp;&nbsp;<button id='print' onClick='window.print();' data-toggle='tooltip' data-placement='right' title='Klik tombol ini untuk mencetak hasil identifikasi'><i class='fa fa-print'></i> Cetak</button> </h2>
 	          <hr><table class='table table-bordered table-striped diagnosa'> 
           <th width=8%>No</th>
           <th width=10%>Kode</th>
@@ -165,36 +165,36 @@ switch ($_GET['act']) {
         $q = mysqli_query($conn, $s) or die($s);
         while ($rw = mysqli_fetch_array($q)) {
           ?>
-<option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
-    <?php echo $rw['kondisi']; ?>
-</option>
-<?php
+          <option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
+            <?php echo $rw['kondisi']; ?>
+          </option>
+          <?php
         }
         echo '</select></td>';
         ?>
-<script type="text/javascript">
-$(document).ready(function() {
-    var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
-        '#FDCD01', '#FD9A01', '#FB6700');
-    setColor();
-    $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>', function() {
-        setColor();
-    });
+        <script type="text/javascript">
+          $(document).ready(function () {
+            var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
+              '#FDCD01', '#FD9A01', '#FB6700');
+            setColor();
+            $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>' , function() {
+              setColor();
+            });
 
-    function setColor() {
-        var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
-        var color = arcolor[selectedItem.data("id")];
-        $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
-        console.log(color);
-    }
-});
-</script>
-<?php
+            function setColor() {
+              var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
+              var color = arcolor[selectedItem.data("id")];
+              $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
+              console.log(color);
+            }
+          });
+        </script>
+        <?php
         echo "</tr>";
       }
       echo "
-		  <input class='float' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
-          </tbody></table></form>";
+      <input class='floating' type=submit name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
+      </tbody></table></form>";
       // <input class='float' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
       //     </tbody></table></form>";
     }

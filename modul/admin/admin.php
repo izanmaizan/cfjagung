@@ -1,4 +1,4 @@
-<title>Admin - Haura</title>
+<title>Admin - T-corn</title>
 <?php
 session_start();
 if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {

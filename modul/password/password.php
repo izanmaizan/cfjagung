@@ -1,4 +1,4 @@
-<title>Ubah Password - Haura</title>
+<title>Ubah Password - T-corn</title>
 <?php
 if ($_SESSION['username'] != "" && $_SESSION['password'] != "") {
 	switch ($_GET['act']) {

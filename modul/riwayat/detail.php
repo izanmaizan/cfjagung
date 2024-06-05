@@ -1,4 +1,4 @@
-<title>Detail Riwayat - Haura</title>
+<title>Detail Riwayat - T-corn</title>
 
 <?php
 if ($_GET['id']) {

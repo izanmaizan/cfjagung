@@ -1,4 +1,4 @@
-<title>Penyakit - Haura</title>
+<title>Penyakit - T-corn</title>
 <?php
 
 session_start();

@@ -21,8 +21,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <base href="http://localhost/cfjagung/">
-    <link rel="icon" href="gambar/admin/favicon.png">
+    <base href="http://localhost/cftongkol/">
+    <link rel="icon" href="favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link href="css/owl-carousel/owl.carousel.css" rel="stylesheet" media="all">
     <link href="css/owl-carousel/owl.theme.css" rel="stylesheet" media="all">
@@ -43,9 +43,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <!-- Popper.js 1.12.8  -->
+    <!-- <script src="aset/Popper.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
     <!-- jQuery 3-7-1 -->
-    <script src="aset/jQuery-3-7-1.js"></script>
+    <!-- <script src="aset/jQuery-3-7-1.js"></script> -->
+    <script src="aset/jQuery-2.js"></script>
     <!-- Bootstrap 4.1.3 -->
     <script src="aset/bootstrap.js"></script>
     <script src="aset/icheck/icheck.js"></script>
@@ -60,171 +64,171 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <!-- AdminLTE App -->
     <script src="aset/app.js"></script>
     <style>
-        /* CSS untuk tampilan modal */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+    /* CSS untuk tampilan modal */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-            /* Tambahkan transition untuk efek animasi */
-            transition: opacity 0.3s ease;
-        }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        /* Tambahkan transition untuk efek animasi */
+        transition: opacity 0.3s ease;
+    }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 400px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            /* Tambahkan transition untuk efek animasi */
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            transform: translateY(-50px);
-            opacity: 0;
-        }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        /* Tambahkan transition untuk efek animasi */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(-50px);
+        opacity: 0;
+    }
 
-        .modal-content.show {
-            /* Atur transform kembali ke nilai semula */
-            transform: translateY(0);
-            opacity: 1;
-        }
+    .modal-content.show {
+        /* Atur transform kembali ke nilai semula */
+        transform: translateY(0);
+        opacity: 1;
+    }
 
-        .close {
-            color: black;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            /* Tambahkan transition untuk efek animasi */
-            transition: color 0.3s ease;
-        }
+    .close {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        /* Tambahkan transition untuk efek animasi */
+        transition: color 0.3s ease;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        /* Style untuk form */
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            border-radius: 5px;
-        }
+    /* Style untuk form */
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
 
-        .btn-login {
-            /* background-color: #4CAF50; */
-            background-color: #00A65A;
-            color: white;
-            padding: 7px 10px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
+    .btn-login {
+        /* background-color: #4CAF50; */
+        background-color: #00A65A;
+        color: white;
+        padding: 7px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
 
-        .submit {
-            background-color: #00A65A;
-            color: white;
-            padding: 7px 10px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
-        }
+    .submit {
+        background-color: #00A65A;
+        color: white;
+        padding: 7px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+    }
 
-        .submit:hover {
-            background-color: #008D4C;
-        }
+    .submit:hover {
+        background-color: #008D4C;
+    }
 
-        /* CSS untuk tombol login */
-        .btn-login {
-            opacity: 0.8;
-            position: relative;
-            /* Mengatur posisi relatif untuk konten di dalam tombol */
-            /* background-color: #4CAF50; */
-            /* Warna latar belakang tombol */
-            color: white;
-            /* Warna teks tombol */
-            /* padding: 10px 20px; */
-            /* Padding tombol */
-            border: none;
-            /* Tanpa border */
-            /* border-radius: 5px; */
-            /* Border radius */
-            cursor: pointer;
-            /* Kursor pointer saat diarahkan ke tombol */
-            font-size: 14px;
-            /* Ukuran font */
-            overflow: hidden;
-            /* Overflow tersembunyi untuk konten dalam tombol */
-        }
+    /* CSS untuk tombol login */
+    .btn-login {
+        opacity: 0.8;
+        position: relative;
+        /* Mengatur posisi relatif untuk konten di dalam tombol */
+        /* background-color: #4CAF50; */
+        /* Warna latar belakang tombol */
+        color: white;
+        /* Warna teks tombol */
+        /* padding: 10px 20px; */
+        /* Padding tombol */
+        border: none;
+        /* Tanpa border */
+        /* border-radius: 5px; */
+        /* Border radius */
+        cursor: pointer;
+        /* Kursor pointer saat diarahkan ke tombol */
+        font-size: 14px;
+        /* Ukuran font */
+        overflow: hidden;
+        /* Overflow tersembunyi untuk konten dalam tombol */
+    }
 
-        /* Efek hover pada tombol */
-        .btn-login::after {
-            content: '';
-            /* Konten kosong */
-            position: absolute;
-            /* Mengatur posisi absolut untuk elemen tambahan */
-            width: 80%;
-            /* Lebar 100% */
-            height: 3px;
-            /* Tinggi garis */
-            background-color: white;
-            border-radius: 50px;
-            /* Warna garis */
-            bottom: 5px;
-            /* Membuat garis berada di bagian bawah tombol */
-            left: 10px;
-            /* Membuat garis dimulai dari kiri */
-            transform: scaleX(0);
-            /* Skala X nol untuk menyembunyikan garis saat tidak dihover */
-            transition: transform 0.3s ease;
-            /* Transisi untuk transformasi */
-        }
+    /* Efek hover pada tombol */
+    .btn-login::after {
+        content: '';
+        /* Konten kosong */
+        position: absolute;
+        /* Mengatur posisi absolut untuk elemen tambahan */
+        width: 80%;
+        /* Lebar 100% */
+        height: 3px;
+        /* Tinggi garis */
+        background-color: white;
+        border-radius: 50px;
+        /* Warna garis */
+        bottom: 5px;
+        /* Membuat garis berada di bagian bawah tombol */
+        left: 10px;
+        /* Membuat garis dimulai dari kiri */
+        transform: scaleX(0);
+        /* Skala X nol untuk menyembunyikan garis saat tidak dihover */
+        transition: transform 0.3s ease;
+        /* Transisi untuk transformasi */
+    }
 
-        .btn-login:hover::after {
-            opacity: 1;
-            transform: scaleX(1);
-            /* Skala X 1 saat tombol dihover untuk menampilkan garis */
-        }
+    .btn-login:hover::after {
+        opacity: 1;
+        transform: scaleX(1);
+        /* Skala X 1 saat tombol dihover untuk menampilkan garis */
+    }
 
-        .input-login {
-            display: flex;
-            flex-direction: row;
-        }
+    .input-login {
+        display: flex;
+        flex-direction: row;
+    }
 
-        .input-login i {
-            /* border: 1px solid #ccc; */
-            background: #EEC037;
-            width: 40px;
-            height: 45px;
-            border-radius: 3px;
-            position: relative;
-            top: 8px;
-            left: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .input-login i {
+        /* border: 1px solid #ccc; */
+        background: #EEC037;
+        width: 40px;
+        height: 45px;
+        border-radius: 3px;
+        position: relative;
+        top: 8px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     </style>
 </head>
 
@@ -261,7 +265,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
     </div>
 
-    <!-- Modal Login  -->
+    <!-- Modal Login 
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -286,7 +290,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <div class="wrapper">
@@ -295,9 +299,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             <!-- Logo -->
             <a href="./" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b><i class="fa fa-contao" aria-hidden="true"></i>Hr</b></span>
+                <span class="logo-mini"><b><i class="fa-solid fa-disease"></i>Tc</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b><i class="fa fa-contao" aria-hidden="true"></i>Haura</b></span>
+                <span class="logo-lg"><b><i class="fa-solid fa-disease"></i>T-corn</b></span>
             </a>
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -311,49 +315,50 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         <?php
                         if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             ?>
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="gambar/admin/admin.png" class="user-image" alt="User Image">
-                                    <?php echo ucfirst($_SESSION['username']); ?>
-                                    <span class="hidden-xs">
-                                        <?php echo $user; ?>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="gambar/admin/admin.png" class="img-circle" alt="User Image">
-                                        <p>
-                                            Login sebagai
-                                            <b><?php echo ucfirst($_SESSION['username']); ?></b><br>
-                                            <small><b><?php echo ucfirst($_SESSION['nama_lengkap']); ?></b></small>
-                                            <small>Pakar dari Haura</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <!-- /.row -->
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a class="btn btn-default btn-flat" <?php if ($module == "tentang")
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="gambar/admin/admin.png" class="user-image" alt="User Image">
+                                <?php echo ucfirst($_SESSION['username']); ?>
+                                <span class="hidden-xs">
+                                    <?php echo $user; ?>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="gambar/admin/admin.png" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        Login sebagai
+                                        <b><?php echo ucfirst($_SESSION['username']); ?></b><br>
+                                        <small><b><?php echo ucfirst($_SESSION['nama_lengkap']); ?></b></small>
+                                        <small>Pakar dari T-corn</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a class="btn btn-default btn-flat" <?php if ($module == "tentang")
                                                 echo 'class="class="btn btn-default btn-flat active"'; ?>
-                                                href="?module=tentang"><i class="fa-solid fa-file-invoice"></i>
-                                                <span>Tentang</span></a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a class="btn btn-default btn-flat"
-                                                href="JavaScript: confirmIt('Anda yakin akan logout dari aplikasi ?','logout.php','','','','u','n','Self','Self')"
-                                                onMouseOver="self.status = ''; return true"
-                                                onMouseOut="self.status = ''; return true"><i class="fa fa-sign-out"></i>
-                                                <span>Keluar</span></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                                            href="?module=tentang"><i class="fa-solid fa-file-invoice"></i>
+                                            <span>Tentang</span></a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-flat"
+                                            href="JavaScript: confirmIt('Anda yakin akan logout dari aplikasi ?','logout.php','','','','u','n','Self','Self')"
+                                            onMouseOver="self.status = ''; return true"
+                                            onMouseOut="self.status = ''; return true"><i class="fa fa-sign-out"></i>
+                                            <span>Keluar</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         <?php } else { ?>
-                            <?php
+                        <?php
                             // Tampilan tombol masuk di navbar sesuai status login
                             if (!$isLoggedIn) {
                                 echo '<li class="dropdown messages-menu">
@@ -408,33 +413,33 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </div><!-- ./wrapper -->
 
     <script>
-        // Fungsi untuk membuka modal
-        function openModal() {
-            var modal = document.getElementById("myModal");
-            var modalContent = modal.querySelector('.modal-content');
-            modal.style.display = "block";
-            setTimeout(function () {
-                modalContent.classList.add('show');
-            }, 10);
-        }
+    // Fungsi untuk membuka modal
+    function openModal() {
+        var modal = document.getElementById("myModal");
+        var modalContent = modal.querySelector('.modal-content');
+        modal.style.display = "block";
+        setTimeout(function() {
+            modalContent.classList.add('show');
+        }, 10);
+    }
 
-        // Fungsi untuk menutup modal saat tombol close di klik
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            var modalContent = modal.querySelector('.modal-content');
-            modalContent.classList.remove('show');
-            setTimeout(function () {
-                modal.style.display = "none";
-            }, 300); // Sesuaikan dengan durasi transisi CSS
-        }
+    // Fungsi untuk menutup modal saat tombol close di klik
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        var modalContent = modal.querySelector('.modal-content');
+        modalContent.classList.remove('show');
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 300); // Sesuaikan dengan durasi transisi CSS
+    }
 
-        // Menutup modal saat user mengklik di luar modal
-        window.onclick = function (event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                closeModal();
-            }
+    // Menutup modal saat user mengklik di luar modal
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            closeModal();
         }
+    }
     </script>
 </body>
 

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Tentang - Haura</title>
+    <title>Tentang - T-corn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -27,8 +27,10 @@
     <div class="ma3">
         <article class="tc w-75 center pt5 pb2 ph3 mw6-ns ba bw1 b--light-gray" style="background: #fff;">
             <header class="mb4">
-                <img class="br-100" src="gambar/admin/favicon.png" alt="Profile headshot" />
-                <h1 class="f3 lh-title mv2 dark-gray">Haura</h1>
+                <!-- <img class="br-100" src="/aset/tentang/favicon.png" alt="Profile headshot" /> -->
+                <img class="br-100" src="aset/tentang/favicon.png" alt="Profile headshot"
+                    style="width: 100px; height: 100px;">
+                <h1 class="f3 lh-title mv2 dark-gray">T-corn</h1>
 
 
                 <p class="f6 tl lh-copy silver" style="margin: 20px;">Sistem pakar yang mampu

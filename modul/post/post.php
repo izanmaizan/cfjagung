@@ -1,22 +1,22 @@
-<title>Posting - Haura</title>
+<title>Posting - T-corn</title>
 <script type="text/javascript">
-function Blank_TextField_Validator() {
+  function Blank_TextField_Validator() {
     if (text_form.nama_post.value == "") {
-        alert("Nama Post tidak boleh kosong !");
-        text_form.nama_post.focus();
-        return (false);
+      alert("Nama Post tidak boleh kosong !");
+      text_form.nama_post.focus();
+      return (false);
     }
     return (true);
-}
+  }
 
-function Blank_TextField_Validator_Cari() {
+  function Blank_TextField_Validator_Cari() {
     if (text_form.keyword.value == "") {
-        alert("Isi dulu keyword pencarian !");
-        text_form.keyword.focus();
-        return (false);
+      alert("Isi dulu keyword pencarian !");
+      text_form.keyword.focus();
+      return (false);
     }
     return (true);
-}
+  }
 </script>
 <?php
 include "config/fungsi_alert.php";
@@ -217,27 +217,27 @@ switch ($_GET['act']) {
 }
 ?>
 <script>
-function readURL(input) {
+  function readURL(input) {
 
     if (input.files &&
-        input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#preview').attr('src', e.target.result);
-        }
+      input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#preview').attr('src', e.target.result);
+      }
 
-        reader.readAsDataURL(input.files[0]);
+      reader.readAsDataURL(input.files[0]);
     }
-}
+  }
 
-$("#upload").change(function() {
+  $("#upload").change(function () {
     readURL(this);
-});
+  });
 
-$(function() {
+  $(function () {
     CKEDITOR.replace('editor1');
     CKEDITOR.replace('editor2');
     CKEDITOR.replace('editor1a');
     CKEDITOR.replace('editor2a');
-})
+  })
 </script>

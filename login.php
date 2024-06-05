@@ -11,19 +11,19 @@ $ketemu = mysqli_num_rows($login);
 $r = mysqli_fetch_array($login);
 
 if ($ketemu > 0) {
-  // Jika username ditemukan
-  if ($r['password'] == $pass) {
-    // Jika password sesuai
-    $_SESSION['username'] = $r['username'];
-    $_SESSION['password'] = $r['password'];
-    $_SESSION['nama_lengkap'] = $r['nama_lengkap'];
-    header("location: index.php");
-  } else {
-    // Jika password salah
-    echo "
+    // Jika username ditemukan
+    if ($r['password'] == $pass) {
+        // Jika password sesuai
+        $_SESSION['username'] = $r['username'];
+        $_SESSION['password'] = $r['password'];
+        $_SESSION['nama_lengkap'] = $r['nama_lengkap'];
+        header("location: index.php");
+    } else {
+        // Jika password salah
+        echo "
             <html lang='en'>
             <head>
-                <title>Login Gagal ! - Haura</title>
+                <title>Login Gagal ! - T-corn</title>
                 <link href='css/font-awesome-4.2.0/font-awesome-4.2.0/css/font-awesome.min.css' rel='stylesheet'>
                 <link rel='stylesheet' href='aset/cinta.css'>
                 <link href='css/main.css' rel='stylesheet' type='text/css' media='all'/>
@@ -50,13 +50,13 @@ if ($ketemu > 0) {
             </body>
             </html>
         ";
-  }
+    }
 } else {
-  // Jika username tidak ditemukan
-  echo "
+    // Jika username tidak ditemukan
+    echo "
         <html lang='en'>
         <head>
-            <title>Login Gagal ! - Haura</title>
+            <title>Login Gagal ! - T-corn</title>
             <link href='css/font-awesome-4.2.0/font-awesome-4.2.0/css/font-awesome.min.css' rel='stylesheet'>
             <link rel='stylesheet' href='aset/cinta.css'>
             <link href='css/main.css' rel='stylesheet' type='text/css' media='all'/>
