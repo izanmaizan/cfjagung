@@ -96,16 +96,16 @@ table.table-bordered.diagnosa td {
 
 /*Konsultasi*/
 table.konsultasi th {
-  background-color: #95afc0;
+  background-color: #00a65a;
   color: #fff;
 }
 
 table.konsultasi {
-  border: 1px solid #95afc0;
+  border: 1px solid #00a65a;
 }
 
 table.table-bordered.konsultasi th {
-  border: 1px solid #95afc0;
+  border: 1px solid #00a65a;
 }
 table.table-bordered.konsultasi td {
   border: 1px solid #c9d1d9;

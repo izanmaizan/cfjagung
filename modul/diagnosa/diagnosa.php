@@ -165,31 +165,31 @@ switch ($_GET['act']) {
         $q = mysqli_query($conn, $s) or die($s);
         while ($rw = mysqli_fetch_array($q)) {
           ?>
-<option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
-    <?php echo $rw['kondisi']; ?>
-</option>
-<?php
+          <option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
+            <?php echo $rw['kondisi']; ?>
+          </option>
+          <?php
         }
         echo '</select></td>';
         ?>
-<script type="text/javascript">
-$(document).ready(function() {
-    var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
-        '#FDCD01', '#FD9A01', '#FB6700');
-    setColor();
-    $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>', function() {
-        setColor();
-    });
+        <script type="text/javascript">
+          $(document).ready(function () {
+            var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
+              '#FDCD01', '#FD9A01', '#FB6700');
+            setColor();
+            $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>' , function() {
+              setColor();
+            });
 
-    function setColor() {
-        var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
-        var color = arcolor[selectedItem.data("id")];
-        $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
-        console.log(color);
-    }
-});
-</script>
-<?php
+            function setColor() {
+              var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
+              var color = arcolor[selectedItem.data("id")];
+              $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
+              console.log(color);
+            }
+          });
+        </script>
+        <?php
         echo "</tr>";
       }
       echo "
@@ -209,13 +209,14 @@ $(document).ready(function() {
 ?>
 
 <style>
-.con-tooltip {
+  .con-tooltip {
     border-top: 0;
     border-left: 0;
     border-right: 0;
     text-decoration: none;
     font-family: sans-serif;
-    font-size: 14pt;
+    font-size: 14px;
+    font-weight: 700;
     position: fixed;
     width: 100px;
     height: 50px;
@@ -231,12 +232,12 @@ $(document).ready(function() {
     transition: all 0.3s ease-in-out;
 
 
-}
+  }
 
-/*tooltip Box*/
-/* .con-tooltip { */
+  /*tooltip Box*/
+  /* .con-tooltip { */
 
-/* position: relative;
+  /* position: relative;
     background: #F2D1C9;
 
     border-radius: 9px;
@@ -246,25 +247,27 @@ $(document).ready(function() {
     display: inline-block;
 
     transition: all 0.3s ease-in-out; */
-/* cursor: default;
+  /* cursor: default;
 
   } */
 
 
-/*tooltip */
-.tooltip {
+  /*tooltip */
+  .tooltip {
     visibility: hidden;
     z-index: 1;
     opacity: .40;
 
     width: 200%;
-    padding: 0px 20px;
+    padding: 5px 20px;
+    font-size: 13px;
+    font-weight: 600;
 
     background: #008D4C;
     color: #fff;
 
     position: absolute;
-    top: -130%;
+    top: -150%;
     left: -120%;
     border-radius: 9px;
     font: 16px;
@@ -273,11 +276,11 @@ $(document).ready(function() {
     transition: all 0.3s ease-in-out;
 
     box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
-}
+  }
 
 
-/* tooltip  after*/
-.tooltip::after {
+  /* tooltip  after*/
+  .tooltip::after {
     content: " ";
     width: 0;
     height: 0;
@@ -289,59 +292,59 @@ $(document).ready(function() {
     position: absolute;
     left: 80%;
 
-}
+  }
 
-.con-tooltip:hover .tooltip {
+  .con-tooltip:hover .tooltip {
     visibility: visible;
     transform: translateY(-10px);
     opacity: 1;
     transition: .3s linear;
     animation: odsoky 1s ease-in-out infinite alternate;
 
-}
+  }
 
-.tooltip p {
+  .tooltip p {
     width: 100%;
-}
+  }
 
-@keyframes odsoky {
+  @keyframes odsoky {
     0% {
-        transform: translateY(6px);
+      transform: translateY(6px);
     }
 
     100% {
-        transform: translateY(1px);
+      transform: translateY(1px);
     }
 
-}
+  }
 
-/*hover ToolTip*/
-.left:hover {
+  /*hover ToolTip*/
+  .left:hover {
     transform: translateX(-6px);
-}
+  }
 
-.top:hover {
+  .top:hover {
     transform: translateY(-6px);
-}
+  }
 
-.bottom:hover {
+  .bottom:hover {
     transform: translateY(6px);
-}
+  }
 
-.right:hover {
+  .right:hover {
     transform: translateX(6px);
-}
+  }
 
-/*left*/
+  /*left*/
 
-.left .tooltip {
+  .left .tooltip {
     /* top: -20%; */
     left: -130%;
-}
+  }
 
-.left .tooltip::after {
+  .left .tooltip::after {
     top: 40%;
     left: 90%;
     transform: rotate(-90deg);
-}
+  }
 </style>
