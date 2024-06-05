@@ -2,133 +2,126 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Detail Riwayat - T-corn</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      margin: 0;
-      padding: 20px;
-    }
-
+    <meta charset="UTF-8">
+    <title>Detail Riwayat - T-corn</title>
+    <style>
     .content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
-      color: #333;
+        color: #333;
     }
 
     table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
     }
 
     table th,
     table td {
-      padding: 10px;
-      text-align: left;
-      border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
     }
 
     table th {
-      background-color: #00A65A;
-      color: #fff;
+        background-color: #00A65A;
+        color: #fff;
     }
 
     table tr:nth-child(even) {
-      background-color: #f2f2f2;
+        background-color: #f2f2f2;
     }
 
     table tr:hover {
-      background-color: #ddd;
+        background-color: #ddd;
     }
 
     .kondisipilih {
-      font-weight: bold;
+        font-weight: bold;
     }
 
     .well {
-      background-color: #f5f5f5;
-      border-left: 5px solid #00A65A;
-      padding: 10px;
-      border-radius: 5px;
-      margin-top: 20px;
+        background-color: #f5f5f5;
+        border-left: 5px solid #00A65A;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
     }
 
     .card-img-top {
-      border-radius: 10px;
+        border-radius: 10px;
     }
 
     .box {
-      margin-top: 20px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+        margin-top: 20px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
     }
 
     .box-header {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      background-color: #f8f8f8;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        background-color: #f8f8f8;
     }
 
     .box-body {
-      padding: 10px;
+        padding: 10px;
     }
 
     .box-info {
-      border-left: 5px solid #00A65A;
+        border-left: 5px solid #00A65A;
     }
 
     .box-warning {
-      border-left: 5px solid #f39c12;
+        border-left: 5px solid #f39c12;
     }
 
     .box-danger {
-      border-left: 5px solid #dd4b39;
+        border-left: 5px solid #dd4b39;
     }
 
     .callout {
-      padding: 10px;
-      margin: 20px 0;
-      border-radius: 5px;
-      background-color: #f4f4f4;
-      border-left: 5px solid #ddd;
+        padding: 10px;
+        margin: 20px 0;
+        border-radius: 5px;
+        background-color: #f4f4f4;
+        border-left: 5px solid #ddd;
     }
 
     .callout-success {
-      background-color: #dff0d8;
-      border-left: 5px solid #00A65A;
+        background-color: #dff0d8;
+        border-left: 5px solid #00A65A;
     }
 
     button {
-      padding: 10px 20px;
-      background-color: #00A65A;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+        padding: 10px 20px;
+        background-color: #00A65A;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #007F45;
+        background-color: #007F45;
     }
 
     button:focus {
-      outline: none;
+        outline: none;
     }
-  </style>
+    </style>
 </head>
 
 <body>
 
-  <?php
+    <?php
   if ($_GET['id']) {
     $arcolor = array(
       '#FFFFFF',

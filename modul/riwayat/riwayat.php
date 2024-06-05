@@ -13,6 +13,10 @@
     .content {
         display: flex;
         justify-content: space-between;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     table {
@@ -42,6 +46,13 @@
         background-color: #ddd;
     }
 
+
+    .box {
+        margin-top: 20px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+
     .box-chart {
         margin-top: 20px;
         border-radius: 10px;
@@ -53,7 +64,8 @@
     .box-chart-header {
         padding: 10px;
         border-bottom: 1px solid #ddd;
-        background-color: #f8f8f8;
+        background-color: #00A65A;
+        color: #fff;
     }
 
     .box-chart-title {
