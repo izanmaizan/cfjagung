@@ -193,7 +193,7 @@ switch ($_GET['act']) {
         echo "</tr>";
       }
       echo "
-      <input class='floating' type=submit name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
+      <input class='float' type=submit name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
       </tbody></table></form>";
       // <input class='float' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
       //     </tbody></table></form>";
