@@ -165,39 +165,183 @@ switch ($_GET['act']) {
         $q = mysqli_query($conn, $s) or die($s);
         while ($rw = mysqli_fetch_array($q)) {
           ?>
-          <option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
-            <?php echo $rw['kondisi']; ?>
-          </option>
-          <?php
+<option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
+    <?php echo $rw['kondisi']; ?>
+</option>
+<?php
         }
         echo '</select></td>';
         ?>
-        <script type="text/javascript">
-          $(document).ready(function () {
-            var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
-              '#FDCD01', '#FD9A01', '#FB6700');
-            setColor();
-            $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>' , function() {
-              setColor();
-            });
+<script type="text/javascript">
+$(document).ready(function() {
+    var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
+        '#FDCD01', '#FD9A01', '#FB6700');
+    setColor();
+    $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>', function() {
+        setColor();
+    });
 
-            function setColor() {
-              var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
-              var color = arcolor[selectedItem.data("id")];
-              $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
-              console.log(color);
-            }
-          });
-        </script>
-        <?php
+    function setColor() {
+        var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
+        var color = arcolor[selectedItem.data("id")];
+        $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
+        console.log(color);
+    }
+});
+</script>
+<?php
         echo "</tr>";
       }
       echo "
-      <input class='float' type=submit name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
+      <button class='con-tooltip' type=submit name=submit style='font-family:Arial, FontAwesome'>
+      &#xf00e;
+      <div class='tooltip'>
+      <p>Klik disini untuk melihat hasil identifikasi</p>
+      </div>
+      </button>
       </tbody></table></form>";
       // <input class='float' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
+      // <input class='floate' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
       //     </tbody></table></form>";
     }
     break;
 }
 ?>
+
+<style>
+.con-tooltip {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14pt;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #00A65A;
+    /* background-color: #ee3; */
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    margin-top: 32px;
+    transition: all 0.3s ease-in-out;
+
+
+}
+
+/*tooltip Box*/
+/* .con-tooltip { */
+
+/* position: relative;
+    background: #F2D1C9;
+
+    border-radius: 9px;
+    padding: 0 20px;
+    margin: 10px;
+
+    display: inline-block;
+
+    transition: all 0.3s ease-in-out; */
+/* cursor: default;
+
+  } */
+
+
+/*tooltip */
+.tooltip {
+    visibility: hidden;
+    z-index: 1;
+    opacity: .40;
+
+    width: 200%;
+    padding: 0px 20px;
+
+    background: #008D4C;
+    color: #fff;
+
+    position: absolute;
+    top: -130%;
+    left: -120%;
+    border-radius: 9px;
+    font: 16px;
+
+    transform: translateY(9px);
+    transition: all 0.3s ease-in-out;
+
+    box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+
+/* tooltip  after*/
+.tooltip::after {
+    content: " ";
+    width: 0;
+    height: 0;
+
+    border-style: solid;
+    border-width: 12px 12.5px 0 12.5px;
+    border-color: #008D4C transparent transparent transparent;
+
+    position: absolute;
+    left: 80%;
+
+}
+
+.con-tooltip:hover .tooltip {
+    visibility: visible;
+    transform: translateY(-10px);
+    opacity: 1;
+    transition: .3s linear;
+    animation: odsoky 1s ease-in-out infinite alternate;
+
+}
+
+.tooltip p {
+    width: 100%;
+}
+
+@keyframes odsoky {
+    0% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(1px);
+    }
+
+}
+
+/*hover ToolTip*/
+.left:hover {
+    transform: translateX(-6px);
+}
+
+.top:hover {
+    transform: translateY(-6px);
+}
+
+.bottom:hover {
+    transform: translateY(6px);
+}
+
+.right:hover {
+    transform: translateX(6px);
+}
+
+/*left*/
+
+.left .tooltip {
+    /* top: -20%; */
+    left: -130%;
+}
+
+.left .tooltip::after {
+    top: 40%;
+    left: 90%;
+    transform: rotate(-90deg);
+}
+</style>

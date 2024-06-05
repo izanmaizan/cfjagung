@@ -29,10 +29,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <link href="css/magnific-popup.css" type="text/css" rel="stylesheet" media="all" />
     <link href="css/font.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/fontello.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- <link href="css/main.css" rel="stylesheet" type="text/css" media="all" /> -->
     <link rel=stylesheet href="css/paging.css" type="text/css" media=screen>
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="aset/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"> -->
     <!-- Theme style -->
     <link rel="stylesheet" href="aset/AdminLTE.css">
     <link rel="stylesheet" href="aset/cinta.css">
@@ -51,7 +52,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <!-- <script src="aset/jQuery-3-7-1.js"></script> -->
     <script src="aset/jQuery-2.js"></script>
     <!-- Bootstrap 4.1.3 -->
-    <script src="aset/bootstrap.js"></script>
+    <!-- <script src="aset/bootstrap.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="aset/icheck/icheck.js"></script>
     <script src="aset/ckeditor/ckeditor.js"></script>
     <script src="aset/Flot/jquery.flot.js"></script>
@@ -228,6 +230,27 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .floating {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 14pt;
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        /* background-color: #605ca8; */
+        background-color: #00A65A;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        margin-top: 32px;
     }
     </style>
 </head>
