@@ -1,5 +1,5 @@
 <title>Riwayat - T-corn</title>
-<h2 class='text text-primary'>Riwayat Konsultasi⏳</h2>
+<h2 class='text text-bold'>Riwayat Konsultasi⏳</h2>
 <hr>
 <?php
 include "config/fungsi_alert.php";

@@ -96,7 +96,7 @@ switch ($_GET['act']) {
       // --------------------- END -------------------------
 
       echo "<div class='content'>
-	<h2 class='text text-primary'>Hasil Identifikasi &nbsp;&nbsp;<button id='print' onClick='window.print();' data-toggle='tooltip' data-placement='right' title='Klik tombol ini untuk mencetak hasil identifikasi'><i class='fa fa-print'></i> Cetak</button> </h2>
+	<h2 class='text text-bold'>Hasil Identifikasi &nbsp;&nbsp;<button id='print' onClick='window.print();' data-toggle='tooltip' data-placement='right' title='Klik tombol ini untuk mencetak hasil identifikasi'><i class='fa fa-print'></i> Cetak</button> </h2>
 	          <hr><table class='table table-bordered table-striped diagnosa'> 
           <th width=8%>No</th>
           <th width=10%>Kode</th>
