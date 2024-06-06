@@ -143,7 +143,7 @@ switch ($_GET['act']) {
 		  </div>";
     } else {
       echo "
-	 <h2 class='text text-primary'>Identifikasi Penyakit Busuk Tongkol🍄</h2>  <hr>
+	 <h2 class='text text-bold'>Identifikasi Penyakit Busuk Tongkol🍄</h2>  <hr>
 	 <div class='alert alert-success alert-dismissible'>
                 <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
                 <h4><i class='icon fa fa-exclamation-triangle'></i>Perhatian !</h4>
@@ -193,16 +193,13 @@ switch ($_GET['act']) {
         echo "</tr>";
       }
       echo "
-      <button class='con-tooltip' type=submit name=submit style='font-family:Arial, FontAwesome'>
+      <button class='con-tooltip' type='submit' name='submit' data-toggle='tooltip' value='&#xf00e;' title='Klik disini untuk melihat hasil identifikasi' style='font-family:Arial, FontAwesome'>
       &#xf00e;
       <div class='tooltip'>
       <p>Klik disini untuk melihat hasil identifikasi</p>
       </div>
       </button>
       </tbody></table></form>";
-      // <input class='float' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
-      // <input class='floate' type=submit data-toggle='tooltip' data-placement='top' title='Klik disini untuk melihat hasil identifikasi' name=submit value='&#xf00e;' style='font-family:Arial, FontAwesome'>
-      //     </tbody></table></form>";
     }
     break;
 }
@@ -233,24 +230,6 @@ switch ($_GET['act']) {
 
 
   }
-
-  /*tooltip Box*/
-  /* .con-tooltip { */
-
-  /* position: relative;
-    background: #F2D1C9;
-
-    border-radius: 9px;
-    padding: 0 20px;
-    margin: 10px;
-
-    display: inline-block;
-
-    transition: all 0.3s ease-in-out; */
-  /* cursor: default;
-
-  } */
-
 
   /*tooltip */
   .tooltip {
