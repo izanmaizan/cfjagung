@@ -79,16 +79,16 @@ span.hasil {
 }
 
 table.diagnosa th {
-  background-color: #9b59b6;
+  background-color: #00a65a;
   color: #fff;
 }
 
 table.diagnosa {
-  border: 2px solid #9b59b6;
+  border: 2px solid #00a65a;
 }
 
 table.table-bordered.diagnosa th {
-  border: 1px solid #9b59b6;
+  border: 1px solid #00a65a;
 }
 table.table-bordered.diagnosa td {
   border: 1px solid #e9d5eb;

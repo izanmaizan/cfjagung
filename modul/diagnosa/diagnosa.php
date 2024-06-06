@@ -1,4 +1,155 @@
 <title>Identifikasi - T-corn</title>
+
+<style>
+.con-tooltip {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #00A65A;
+    /* background-color: #ee3; */
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    margin-top: 32px;
+    transition: all 0.3s ease-in-out;
+
+
+}
+
+/*tooltip */
+.tooltip {
+    visibility: hidden;
+    z-index: 1;
+    opacity: .40;
+
+    width: 200%;
+    padding: 5px 20px;
+    font-size: 13px;
+    font-weight: 600;
+
+    background: #008D4C;
+    color: #fff;
+
+    position: absolute;
+    top: -150%;
+    left: -120%;
+    border-radius: 9px;
+    font: 16px;
+
+    transform: translateY(9px);
+    transition: all 0.3s ease-in-out;
+
+    box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
+}
+
+
+/* tooltip  after*/
+.tooltip::after {
+    content: " ";
+    width: 0;
+    height: 0;
+
+    border-style: solid;
+    border-width: 12px 12.5px 0 12.5px;
+    border-color: #008D4C transparent transparent transparent;
+
+    position: absolute;
+    left: 80%;
+
+}
+
+.con-tooltip:hover .tooltip {
+    visibility: visible;
+    transform: translateY(-10px);
+    opacity: 1;
+    transition: .3s linear;
+    animation: odsoky 1s ease-in-out infinite alternate;
+
+}
+
+.tooltip p {
+    width: 100%;
+}
+
+@keyframes odsoky {
+    0% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(1px);
+    }
+
+}
+
+/*hover ToolTip*/
+.left:hover {
+    transform: translateX(-6px);
+}
+
+.top:hover {
+    transform: translateY(-6px);
+}
+
+.bottom:hover {
+    transform: translateY(6px);
+}
+
+.right:hover {
+    transform: translateX(6px);
+}
+
+/*left*/
+
+.left .tooltip {
+    /* top: -20%; */
+    left: -130%;
+}
+
+.left .tooltip::after {
+    top: 40%;
+    left: 90%;
+    transform: rotate(-90deg);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #00A65A !important;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+</style>
+
 <?php
 switch ($_GET['act']) {
 
@@ -97,7 +248,7 @@ switch ($_GET['act']) {
 
       echo "<div class='content'>
 	<h2 class='text text-bold'>Hasil Identifikasi &nbsp;&nbsp;<button id='print' onClick='window.print();' data-toggle='tooltip' data-placement='right' title='Klik tombol ini untuk mencetak hasil identifikasi'><i class='fa fa-print'></i> Cetak</button> </h2>
-	          <hr><table class='table table-bordered table-striped diagnosa'> 
+	          <hr><table> 
           <th width=8%>No</th>
           <th width=10%>Kode</th>
           <th>Gejala yang terlihat pada tongkol jagung</th>
@@ -150,7 +301,7 @@ switch ($_GET['act']) {
                 Silahkan memilih gejala sesuai dengan kondisi tongkol jagung anda, anda dapat memilih kepastian kondisi tongkol jagung dari pasti tidak sampai pasti ya, jika sudah tekan tombol proses (<i class='fa fa-search-plus'></i>)  di bawah untuk melihat hasil.
               </div>
 		<form name=text_form method=POST action='diagnosa' >
-           <table class='table table-bordered table-striped table-hover konsultasi'><tbody class='pilihkondisi'>
+           <table><tbody class='pilihkondisi'>
            <tr><th>No</th><th>Kode</th><th>Gejala</th><th width='20%'>Pilih Kondisi</th></tr>";
 
       $sql3 = mysqli_query($conn, "SELECT * FROM gejala order by kode_gejala");
@@ -165,31 +316,31 @@ switch ($_GET['act']) {
         $q = mysqli_query($conn, $s) or die($s);
         while ($rw = mysqli_fetch_array($q)) {
           ?>
-          <option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
-            <?php echo $rw['kondisi']; ?>
-          </option>
-          <?php
+<option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
+    <?php echo $rw['kondisi']; ?>
+</option>
+<?php
         }
         echo '</select></td>';
         ?>
-        <script type="text/javascript">
-          $(document).ready(function () {
-            var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
-              '#FDCD01', '#FD9A01', '#FB6700');
-            setColor();
-            $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>' , function() {
-              setColor();
-            });
+<script type="text/javascript">
+$(document).ready(function() {
+    var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
+        '#FDCD01', '#FD9A01', '#FB6700');
+    setColor();
+    $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>', function() {
+        setColor();
+    });
 
-            function setColor() {
-              var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
-              var color = arcolor[selectedItem.data("id")];
-              $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
-              console.log(color);
-            }
-          });
-        </script>
-        <?php
+    function setColor() {
+        var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
+        var color = arcolor[selectedItem.data("id")];
+        $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
+        console.log(color);
+    }
+});
+</script>
+<?php
         echo "</tr>";
       }
       echo "
@@ -204,126 +355,3 @@ switch ($_GET['act']) {
     break;
 }
 ?>
-
-<style>
-  .con-tooltip {
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    position: fixed;
-    width: 100px;
-    height: 50px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #00A65A;
-    /* background-color: #ee3; */
-    color: #fff;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    margin-top: 32px;
-    transition: all 0.3s ease-in-out;
-
-
-  }
-
-  /*tooltip */
-  .tooltip {
-    visibility: hidden;
-    z-index: 1;
-    opacity: .40;
-
-    width: 200%;
-    padding: 5px 20px;
-    font-size: 13px;
-    font-weight: 600;
-
-    background: #008D4C;
-    color: #fff;
-
-    position: absolute;
-    top: -150%;
-    left: -120%;
-    border-radius: 9px;
-    font: 16px;
-
-    transform: translateY(9px);
-    transition: all 0.3s ease-in-out;
-
-    box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
-  }
-
-
-  /* tooltip  after*/
-  .tooltip::after {
-    content: " ";
-    width: 0;
-    height: 0;
-
-    border-style: solid;
-    border-width: 12px 12.5px 0 12.5px;
-    border-color: #008D4C transparent transparent transparent;
-
-    position: absolute;
-    left: 80%;
-
-  }
-
-  .con-tooltip:hover .tooltip {
-    visibility: visible;
-    transform: translateY(-10px);
-    opacity: 1;
-    transition: .3s linear;
-    animation: odsoky 1s ease-in-out infinite alternate;
-
-  }
-
-  .tooltip p {
-    width: 100%;
-  }
-
-  @keyframes odsoky {
-    0% {
-      transform: translateY(6px);
-    }
-
-    100% {
-      transform: translateY(1px);
-    }
-
-  }
-
-  /*hover ToolTip*/
-  .left:hover {
-    transform: translateX(-6px);
-  }
-
-  .top:hover {
-    transform: translateY(-6px);
-  }
-
-  .bottom:hover {
-    transform: translateY(6px);
-  }
-
-  .right:hover {
-    transform: translateX(6px);
-  }
-
-  /*left*/
-
-  .left .tooltip {
-    /* top: -20%; */
-    left: -130%;
-  }
-
-  .left .tooltip::after {
-    top: 40%;
-    left: 90%;
-    transform: rotate(-90deg);
-  }
-</style>
