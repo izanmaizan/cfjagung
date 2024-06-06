@@ -18,6 +18,29 @@
     return (true);
   }
 </script>
+
+<style>
+  table th,
+  table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  table th {
+    background-color: #00A65A !important;
+    color: #fff;
+  }
+
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  table tr:hover {
+    background-color: #ddd;
+  }
+</style>
+
 <?php
 include "config/fungsi_alert.php";
 $aksi = "modul/post/aksi_post.php";

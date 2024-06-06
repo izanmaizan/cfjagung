@@ -1,4 +1,25 @@
 <title>Admin - T-corn</title>
+<style>
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #00A65A !important;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+</style>
 <?php
 session_start();
 if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {

@@ -1,4 +1,27 @@
 <title>Pengetahuan - T-corn</title>
+
+<style>
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #00A65A !important;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+</style>
+
 <?php
 
 session_start();
@@ -7,41 +30,41 @@ if (!(isset($_SESSION['username']) && isset($_SESSION['password']))) {
 	exit();
 } else {
 	?>
-	<script type="text/javascript">
-		function Blank_TextField_Validator() {
-			if (text_form.kode_penyakit.value == "") {
-				alert("Pilih dulu penyakit !");
-				text_form.kode_penyakit.focus();
-				return (false);
-			}
-			if (text_form.kode_gejala.value == "") {
-				alert("Pilih dulu gejala !");
-				text_form.kode_gejala.focus();
-				return (false);
-			}
-			if (text_form.mb.value == "") {
-				alert("Isi dulu MB !");
-				text_form.mb.focus();
-				return (false);
-			}
-			if (text_form.md.value == "") {
-				alert("Isi dulu MD !");
-				text_form.md.focus();
-				return (false);
-			}
-			return (true);
-		}
+<script type="text/javascript">
+function Blank_TextField_Validator() {
+    if (text_form.kode_penyakit.value == "") {
+        alert("Pilih dulu penyakit !");
+        text_form.kode_penyakit.focus();
+        return (false);
+    }
+    if (text_form.kode_gejala.value == "") {
+        alert("Pilih dulu gejala !");
+        text_form.kode_gejala.focus();
+        return (false);
+    }
+    if (text_form.mb.value == "") {
+        alert("Isi dulu MB !");
+        text_form.mb.focus();
+        return (false);
+    }
+    if (text_form.md.value == "") {
+        alert("Isi dulu MD !");
+        text_form.md.focus();
+        return (false);
+    }
+    return (true);
+}
 
-		function Blank_TextField_Validator_Cari() {
-			if (text_form.keyword.value == "") {
-				alert("Isi dulu keyword pencarian !");
-				text_form.keyword.focus();
-				return (false);
-			}
-			return (true);
-		}
-	</script>
-	<?php
+function Blank_TextField_Validator_Cari() {
+    if (text_form.keyword.value == "") {
+        alert("Isi dulu keyword pencarian !");
+        text_form.keyword.focus();
+        return (false);
+    }
+    return (true);
+}
+</script>
+<?php
 	include "config/fungsi_alert.php";
 	$aksi = "modul/pengetahuan/aksi_pengetahuan.php";
 	switch ($_GET['act']) {
