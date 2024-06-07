@@ -1,7 +1,7 @@
 <title>Identifikasi - T-corn</title>
 
 <style>
-.con-tooltip {
+  .con-tooltip {
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -24,10 +24,10 @@
     transition: all 0.3s ease-in-out;
 
 
-}
+  }
 
-/*tooltip */
-.tooltip {
+  /*tooltip */
+  .tooltip {
     visibility: hidden;
     z-index: 1;
     opacity: .40;
@@ -50,11 +50,11 @@
     transition: all 0.3s ease-in-out;
 
     box-shadow: 0 0 3px rgba(56, 54, 54, 0.86);
-}
+  }
 
 
-/* tooltip  after*/
-.tooltip::after {
+  /* tooltip  after*/
+  .tooltip::after {
     content: " ";
     width: 0;
     height: 0;
@@ -66,88 +66,88 @@
     position: absolute;
     left: 80%;
 
-}
+  }
 
-.con-tooltip:hover .tooltip {
+  .con-tooltip:hover .tooltip {
     visibility: visible;
     transform: translateY(-10px);
     opacity: 1;
     transition: .3s linear;
     animation: odsoky 1s ease-in-out infinite alternate;
 
-}
+  }
 
-.tooltip p {
+  .tooltip p {
     width: 100%;
-}
+  }
 
-@keyframes odsoky {
+  @keyframes odsoky {
     0% {
-        transform: translateY(6px);
+      transform: translateY(6px);
     }
 
     100% {
-        transform: translateY(1px);
+      transform: translateY(1px);
     }
 
-}
+  }
 
-/*hover ToolTip*/
-.left:hover {
+  /*hover ToolTip*/
+  .left:hover {
     transform: translateX(-6px);
-}
+  }
 
-.top:hover {
+  .top:hover {
     transform: translateY(-6px);
-}
+  }
 
-.bottom:hover {
+  .bottom:hover {
     transform: translateY(6px);
-}
+  }
 
-.right:hover {
+  .right:hover {
     transform: translateX(6px);
-}
+  }
 
-/*left*/
+  /*left*/
 
-.left .tooltip {
+  .left .tooltip {
     /* top: -20%; */
     left: -130%;
-}
+  }
 
-.left .tooltip::after {
+  .left .tooltip::after {
     top: 40%;
     left: 90%;
     transform: rotate(-90deg);
-}
+  }
 
-table {
+  table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     margin-right: 20px;
-}
+  }
 
-table th,
-table td {
+  table th,
+  table td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
-}
+  }
 
-table th {
+  table th {
     background-color: #00A65A !important;
     color: #fff;
-}
+  }
 
-table tr:nth-child(even) {
+  table tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+  }
 
-table tr:hover {
+  table tr:hover {
     background-color: #ddd;
-}
+  }
 </style>
 
 <?php
@@ -316,31 +316,31 @@ switch ($_GET['act']) {
         $q = mysqli_query($conn, $s) or die($s);
         while ($rw = mysqli_fetch_array($q)) {
           ?>
-<option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
-    <?php echo $rw['kondisi']; ?>
-</option>
-<?php
+          <option data-id="<?php echo $rw['id']; ?>" value="<?php echo $r3['kode_gejala'] . '_' . $rw['id']; ?>">
+            <?php echo $rw['kondisi']; ?>
+          </option>
+          <?php
         }
         echo '</select></td>';
         ?>
-<script type="text/javascript">
-$(document).ready(function() {
-    var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
-        '#FDCD01', '#FD9A01', '#FB6700');
-    setColor();
-    $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>', function() {
-        setColor();
-    });
+        <script type="text/javascript">
+          $(document).ready(function () {
+            var arcolor = new Array('#ffffff', '#cc66ff', '#019AFF', '#00CBFD', '#00FEFE', '#A4F804', '#FFFC00',
+              '#FDCD01', '#FD9A01', '#FB6700');
+            setColor();
+            $('.pilihkondisi').on('change', 'tr td select#sl<?php echo $i; ?>' , function() {
+              setColor();
+            });
 
-    function setColor() {
-        var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
-        var color = arcolor[selectedItem.data("id")];
-        $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
-        console.log(color);
-    }
-});
-</script>
-<?php
+            function setColor() {
+              var selectedItem = $('tr td select#sl<?php echo $i; ?> :selected');
+              var color = arcolor[selectedItem.data("id")];
+              $('tr td select#sl<?php echo $i; ?>.opsikondisi').css('background-color', color);
+              console.log(color);
+            }
+          });
+        </script>
+        <?php
         echo "</tr>";
       }
       echo "
