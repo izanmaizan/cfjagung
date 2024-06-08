@@ -199,6 +199,75 @@ table tr:hover {
     color: white;
     padding: 2px 5px;
 }
+
+.minimal-box {
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.minimal-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.minimal-box-header {
+    padding: 12px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 18px;
+    /* Increase font size */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.minimal-box-header h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.minimal-box-body {
+    padding: 15px;
+    background-color: #fff;
+    font-size: 16px;
+    /* Increase font size */
+    color: #555;
+}
+
+.minimal-box-info {
+    border-left: 3px solid #00A65A;
+}
+
+.minimal-box-info .minimal-box-header {
+    background-color: #e6f7e6;
+}
+
+.minimal-box-warning {
+    border-left: 3px solid #f39c12;
+}
+
+.minimal-box-warning .minimal-box-header {
+    background-color: #fff3e6;
+}
+
+.minimal-box-danger {
+    border-left: 3px solid #dd4b39;
+}
+
+.minimal-box-danger .minimal-box-header {
+    background-color: #f7e6e6;
+}
+
+h4 {
+    margin-top: 0;
+    font-size: 16px;
+    /* Increase font size */
+    color: #555;
+}
 </style>
 
 <?php
@@ -514,18 +583,37 @@ switch ($_GET['act']) {
 
 
       //------------------------------------------------------------------
-      echo "</div></div><div class='box box-info box-solid'><div class='box-header with-border'><h3 class='box-title'>Detail</h3></div><div class='box-body'><h4>";
-      echo $ardpkt[$idpkt[1]];
-      echo "</h4></div></div>
-          <div class='box box-warning box-solid'><div class='box-header with-border'><h3 class='box-title'>Saran</h3></div><div class='box-body'><h4>";
-      echo $arspkt[$idpkt[1]];
-      echo "</h4></div></div>
-          <div class='box box-danger box-solid'><div class='box-header with-border'><h3 class='box-title'>Kemungkinan lain:</h3></div><div class='box-body'><h4>";
-      for ($ipl = 2; $ipl < count($idpkt); $ipl++) {
-        echo " <h4><i class='fa fa-caret-square-o-right'></i> " . $nmpkt[$ipl] . "</b> / " . round($vlpkt[$ipl] * 100, 2) . " % (" . $vlpkt[$ipl] . ")<br></h4>";
-      }
       echo "</div></div>
-		  </div>";
+      <div class='minimal-box minimal-box-info'>
+          <div class='minimal-box-header'>
+              <h3 class='box-title'>Detail</h3>
+          </div>
+          <div class='minimal-box-body'>
+              <h4>" . $ardpkt[$idpkt[1]] . "</h4>
+          </div>
+      </div>
+      <div class='minimal-box minimal-box-warning'>
+          <div class='minimal-box-header'>
+              <h3 class='box-title'>Saran</h3>
+          </div>
+          <div class='minimal-box-body'>
+              <h4>" . $arspkt[$idpkt[1]] . "</h4>
+          </div>
+      </div>
+      <div class='minimal-box minimal-box-danger'>
+          <div class='minimal-box-header'>
+              <h3 class='box-title'>Kemungkinan lain:</h3>
+          </div>
+          <div class='minimal-box-body'>
+              <h4>";
+      for ($ipl = 2; $ipl < count($idpkt); $ipl++) {
+        echo "<h4><i class='fa fa-caret-square-o-right'></i> " . $nmpkt[$ipl] . " / " . round($vlpkt[$ipl] * 100, 2) . " % (" . $vlpkt[$ipl] . ")<br></h4>";
+      }
+      echo "</h4>
+          </div>
+      </div>
+      </div>";
+
     } else {
       echo "
 	 <h2 class='text text-bold'>Identifikasi Penyakit Busuk Tongkol🍄</h2>  <hr>

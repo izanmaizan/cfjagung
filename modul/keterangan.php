@@ -15,7 +15,7 @@
         border: 1px solid #888;
         border-radius: 10px;
         width: 80%;
-        max-width: 500px;
+        max-width: 600px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         /* Tambahkan transition untuk efek animasi */
         transition: transform 0.3s ease, opacity 0.3s ease;
@@ -35,6 +35,7 @@
         justify-content: center;
         align-items: center;
         padding: 10px;
+
     }
 
     /* Styling for the card */
@@ -119,7 +120,7 @@
         $hasil = mysqli_query($conn, "SELECT * FROM post ORDER BY kode_post");
         while ($r = mysqli_fetch_array($hasil)) {
             ?>
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" data-aos="fade-right">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom" data-aos="fade-right">
             <div class="custom-card text-center">
                 <img class="card-img-top" src="<?php echo 'gambar/' . $r['gambar']; ?>" alt="" width="200" height="200">
                 <div class="card-block">

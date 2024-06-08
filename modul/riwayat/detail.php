@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Detail Riwayat - T-corn</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
     .content {
         background-color: #fff;
@@ -58,33 +60,76 @@
         border-radius: 10px;
     }
 
-    .box {
+    .minimal-box {
         margin-top: 20px;
-        border-radius: 10px;
+        border-radius: 8px;
         border: 1px solid #ddd;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .box-header {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
-        background-color: #f8f8f8;
+    .minimal-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    .box-body {
-        padding: 10px;
+    .minimal-box-header {
+        padding: 12px;
+        background-color: #f5f5f5;
+        color: #333;
+        font-size: 18px;
+        /* Increase font size */
+        font-weight: 600;
+        display: flex;
+        align-items: center;
     }
 
-    .box-info {
-        border-left: 5px solid #00A65A;
+    .minimal-box-header h3 {
+        margin: 0;
+        flex-grow: 1;
     }
 
-    .box-warning {
-        border-left: 5px solid #f39c12;
+    .minimal-box-body {
+        padding: 15px;
+        background-color: #fff;
+        font-size: 16px;
+        /* Increase font size */
+        color: #555;
     }
 
-    .box-danger {
-        border-left: 5px solid #dd4b39;
+    .minimal-box-info {
+        border-left: 3px solid #00A65A;
     }
+
+    .minimal-box-info .minimal-box-header {
+        background-color: #e6f7e6;
+    }
+
+    .minimal-box-warning {
+        border-left: 3px solid #f39c12;
+    }
+
+    .minimal-box-warning .minimal-box-header {
+        background-color: #fff3e6;
+    }
+
+    .minimal-box-danger {
+        border-left: 3px solid #dd4b39;
+    }
+
+    .minimal-box-danger .minimal-box-header {
+        background-color: #f7e6e6;
+    }
+
+    h4 {
+        margin-top: 0;
+        font-size: 16px;
+        /* Increase font size */
+        color: #555;
+    }
+
+
 
     .callout {
         padding: 10px;
@@ -115,6 +160,54 @@
 
     button:focus {
         outline: none;
+    }
+
+    .formula {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-left: 5px solid #06f;
+        margin: 20px 0;
+        font-family: 'Cambria Math', sans-serif;
+        /* font-size: 24px; */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .rumus {
+        font-size: 20px;
+    }
+
+    .formula b {
+        color: #06f;
+    }
+
+    .step {
+        margin: 10px 0;
+    }
+
+    .result {
+        background-color: #dfd;
+        padding: 10px;
+        border-left: 5px solid #0a0;
+        /* font-weight: bold; */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .formula,
+    .step,
+    .result {
+        background-color: #ecf0f1;
+        padding: 10px;
+        border-left: 5px solid #00A65A;
+        margin-bottom: 20px;
+    }
+
+    .highlight {
+        background-color: #e74c3c;
+        color: white;
+        padding: 2px 5px;
     }
     </style>
 </head>
@@ -213,40 +306,216 @@
     echo "<div class='callout'>Jenis penyakit yang diderita adalah <b>
           <h3 class='text text-success'>" . $nmpkt[1] . "
         </b> / " . round($vlpkt[1] * 100, 2) . " % (" . $vlpkt[1] . ")<br></h3>";
-    echo "</div>
+    echo "</div>";
+    // Tampilkan tombol "Detail Perhitungan"
+    echo '<button id="showDetailBtn" class="btn btn-instagram"><i class="fa-solid fa-square-root-variable" style="font-size:20px;"></i> Rincian</button>';
+
+    // Tambahkan div untuk menampilkan detail perhitungan (dengan style display: none)
+    echo '<div id="detailPerhitungan" style="display: none;">';
+    // Tampilkan tabel CF dan proses perhitungan
+    echo '<h2>Detail Perhitungan Certainty Factor (CF)</h2>';
+    // Tabel CF
+    echo "<table>
+<th width=2%>Kode Penyakit</th>
+<th width=15%>Nama Penyakit</th>
+<th width=5%>Kode Gejala</th>
+<th width=2%>MB</th>
+<th width=2%>MD</th>
+<th width=10%>CF Rule</th>
+<th width=10%>Bobot dari User</th>
+</tr>";
+    $ig = 0;
+    $cf_values = array(); // Menyimpan nilai CF untuk setiap aturan
+    foreach ($argejala as $key => $value) {
+      $ig++;
+      $gejala = $key;
+      $sql_cf = mysqli_query($conn, "SELECT bp.kode_penyakit, bp.mb, bp.md, py.nama_penyakit 
+                              FROM basis_pengetahuan bp
+                              INNER JOIN penyakit py ON bp.kode_penyakit = py.kode_penyakit
+                              WHERE bp.kode_gejala = '$key'");
+      while ($r_cf = mysqli_fetch_array($sql_cf)) {
+        $nama_penyakit = $r_cf['nama_penyakit'];
+        $kd_penyakit = $r_cf['kode_penyakit'];
+        $mb = $r_cf['mb'];
+        $md = $r_cf['md'];
+        $cf = ($mb - $md);
+        $cf_user = $arbobot[$value];
+        $cf_final = $cf * $cf_user; // Rumus perhitungan CF
+        $cf_values[] = $cf_final;
+        echo '<tr><td>' . $kd_penyakit . '</td>';
+        echo '<td>' . $nama_penyakit . '</td>';
+        echo '<td>G' . str_pad($gejala, 3, '0', STR_PAD_LEFT) . '</td>';
+        echo '<td>' . $mb . '</td>';
+        echo '<td>' . $md . '</td>';
+        echo '<td>' . round($cf, 2) . '</td>';
+        echo '<td>' . $cf_user . '</td></tr>';
+      }
+
+      // Simpan data untuk proses selanjutnya
+      $gejala_data[] = str_pad($gejala, 3, '0', STR_PAD_LEFT);
+      $penyakit_data[] = $kd_penyakit;
+      $mb_data[] = $mb;
+      $md_data[] = $md;
+      $cf_rule_data[] = round($cf, 2);
+      $bobot_data[] = $cf_user;
+    }
+    echo "</table>";
+
+    ?>
+
+    <h1>Proses Perhitungan Certainty Factor (CF)</h1>
+
+    <div class="formula">
+        <h2>Rumus Perhitungan CF</h2>
+        <p>CF dihitung menggunakan rumus:</p>
+        <p class="rumus">\[
+            \text{CF} = (\text{MB} - \text{MD}) \times \text{Bobot dari User}
+            \]</p>
+        <p>Kombinasi CF dilakukan sebagai berikut:</p>
+        <ul>
+            <li>Jika \( \text{CF}_1 \) dan \( \text{CF}_2 \) keduanya positif:
+                <p class="rumus">
+                    \[
+                    \text{CF}_{\text{kombinasi}} = \text{CF}_1 + \text{CF}_2 \times (1 - \text{CF}_1)
+                    \]
+                </p>
+            </li>
+            <li>Jika \( \text{CF}_1 \) dan \( \text{CF}_2 \) keduanya negatif:
+                <p class="rumus">
+                    \[
+                    \text{CF}_{\text{kombinasi}} = \text{CF}_1 + \text{CF}_2 \times (1 + \text{CF}_1)
+                    \]
+                </p>
+            </li>
+            <li>Jika \( \text{CF}_1 \) dan \( \text{CF}_2 \) berlawanan tanda:
+                <p class="rumus">
+                    \[
+                    \text{CF}_{\text{kombinasi}} = \frac{\text{CF}_1 + \text{CF}_2}{1 - \min(\left|\text{CF}_1\right|,
+                    \left|\text{CF}_2\right|)}
+                    \]
+                </p>
+            </li>
+        </ul>
     </div>
-    <div class='box box-info'>
-      <div class='box-header'>
-        <h3 class='box-title'>Detail</h3>
+
+    <?php
+    // Fungsi untuk menampilkan detail proses perhitungan CF
+    function display_steps($gejala, $penyakit, $mb, $md, $cf_rule, $bobot)
+    {
+      $penyakit_cf = [];
+      $steps = [];
+
+      foreach ($gejala as $index => $value) {
+        $cf = ($mb[$index] - $md[$index]) * $bobot[$index];
+        $step = "<div class='step'>Gejala: <b>$gejala[$index]</b>, Penyakit: <b>$penyakit[$index]</b>, MB: <b>$mb[$index]</b>, MD: <b>$md[$index]</b>, CF Rule: <b>$cf_rule[$index]</b>, Bobot: <b>$bobot[$index]</b><br>";
+        $step .= "CF = ($mb[$index] - $md[$index]) * $bobot[$index] = " . number_format($cf, 4) . "<br>";
+
+        if (isset($penyakit_cf[$penyakit[$index]])) {
+          $cflama = $penyakit_cf[$penyakit[$index]];
+          if ($cf >= 0 && $cflama >= 0) {
+            $cflama = $cflama + $cf * (1 - $cflama);
+            $step .= "Kombinasi Positif: CF Baru = " . number_format($cflama, 4) . "<br>";
+          } elseif ($cf < 0 && $cflama < 0) {
+            $cflama = $cflama + $cf * (1 + $cflama);
+            $step .= "Kombinasi Negatif: CF Baru = " . number_format($cflama, 4) . "<br>";
+          } else {
+            $cflama = ($cflama + $cf) / (1 - min(abs($cflama), abs($cf)));
+            $step .= "Kombinasi Berbeda Tanda: CF Baru = " . number_format($cflama, 4) . "<br>";
+          }
+          $penyakit_cf[$penyakit[$index]] = $cflama;
+        } else {
+          $penyakit_cf[$penyakit[$index]] = $cf;
+          $step .= "Inisialisasi CF: CF Baru = " . number_format($cf, 4) . "<br>";
+        }
+
+        $step .= "</div>";
+        $steps[] = $step;
+      }
+
+      return [$penyakit_cf, $steps];
+    }
+
+    // Menampilkan proses perhitungan
+    list($penyakit_cf, $steps) = display_steps($gejala_data, $penyakit_data, $mb_data, $md_data, $cf_rule_data, $bobot_data);
+
+    // Mengurutkan penyakit berdasarkan CF tertinggi
+    arsort($penyakit_cf);
+
+    // Menampilkan langkah-langkah
+    echo "<h2>Langkah-langkah Proses Perhitungan:</h2>";
+    foreach ($steps as $step) {
+      echo $step;
+    }
+
+    // Mendapatkan data nama penyakit dari tabel penyakit
+    $sql_nama_penyakit = mysqli_query($conn, "SELECT kode_penyakit, nama_penyakit FROM penyakit");
+    $nama_penyakit = [];
+    while ($row = mysqli_fetch_array($sql_nama_penyakit)) {
+      $nama_penyakit[$row['kode_penyakit']] = $row['nama_penyakit'];
+    }
+
+    // Menampilkan hasil akhir
+    echo "<h2>Hasil Akhir:</h2>";
+    echo "<div class='result'>";
+    $max_cf = max($penyakit_cf); // Mendapatkan nilai CF tertinggi
+    foreach ($penyakit_cf as $kode_penyakit => $cf) {
+      // Mendapatkan nama penyakit berdasarkan kode penyakit
+      $nama = $nama_penyakit[$kode_penyakit];
+      // Jika nilai CF saat ini adalah nilai tertinggi, tambahkan tag <strong> dan beri warna merah
+      if ($cf === $max_cf) {
+        echo "<strong style='font-size:18px;'>Penyakit: <span style='color:red;'>$nama</span>, CF: <span style='color:red;'>" . number_format($cf, 4) . "</span></strong><br>";
+      } else {
+        echo "Penyakit: $nama, CF: " . number_format($cf, 4) . "<br>";
+      }
+    }
+    echo "</div>";
+    echo "</div>";
+
+    echo '<script>
+            document.getElementById("showDetailBtn").addEventListener("click", function() {
+              var detailPerhitungan = document.getElementById("detailPerhitungan");
+              if (detailPerhitungan.style.display === "none") {
+                detailPerhitungan.style.display = "block";
+              } else {
+                detailPerhitungan.style.display = "none";
+              }
+            });
+          </script>';
+    echo "</div>";
+
+
+
+    echo "<div class='minimal-box minimal-box-info'>
+        <div class='minimal-box-header'>
+            <h3 class='box-title'>Detail</h3>
+        </div>
+        <div class='minimal-box-body'>
+            <h4>" . $ardpkt[$idpkt[1]] . "</h4>
+        </div>
       </div>
-      <div class='box-body'>
-        <h4>";
-    echo $ardpkt[$idpkt[1]];
-    echo "</h4>
+      <div class='minimal-box minimal-box-warning'>
+        <div class='minimal-box-header'>
+            <h3 class='box-title'>Saran</h3>
+        </div>
+        <div class='minimal-box-body'>
+            <h4>" . $arspkt[$idpkt[1]] . "</h4>
+        </div>
       </div>
-    </div>
-    <div class='box box-warning'>
-      <div class='box-header'>
-        <h3 class='box-title'>Saran</h3>
-      </div>
-      <div class='box-body'>
-        <h4>";
-    echo $arspkt[$idpkt[1]];
-    echo "</h4>
-      </div>
-    </div>
-    <div class='box box-danger'>
-      <div class='box-header'>
-        <h3 class='box-title'>Kemungkinan lain:</h3>
-      </div>
-      <div class='box-body'>
-        <h4>";
+      <div class='minimal-box minimal-box-danger'>
+        <div class='minimal-box-header'>
+            <h3 class='box-title'>Kemungkinan lain:</h3>
+        </div>
+        <div class='minimal-box-body'>
+            <h4>";
     for ($ipl = 2; $ipl < count($idpkt); $ipl++) {
-      echo " <h4><i class='fa fa-caret-square-o-right'></i> " . $nmpkt[$ipl] . "</b> / "
+      echo "<h4><i class='fa fa-caret-square-o-right'></i> " . $nmpkt[$ipl] . " / "
         . round($vlpkt[$ipl], 2) . " % (" . $vlpkt[$ipl] . ")<br></h4>";
     }
-    echo "</div></div>
+    echo "</h4>
+        </div>
+      </div>
       </div>";
+
   }
   ?>
 

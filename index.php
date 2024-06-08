@@ -66,369 +66,369 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <!-- AdminLTE App -->
     <script src="aset/app.js"></script>
     <style>
-        /* CSS untuk tampilan modal */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+    /* CSS untuk tampilan modal */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.6);
-            /* Tambahkan transition untuk efek animasi */
-            transition: opacity 0.3s ease;
-        }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.6);
+        /* Tambahkan transition untuk efek animasi */
+        transition: opacity 0.3s ease;
+    }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            border-radius: 10px;
-            width: 80%;
-            max-width: 500px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            /* Tambahkan transition untuk efek animasi */
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            transform: translateY(-50px);
-            opacity: 0;
-        }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 500px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        /* Tambahkan transition untuk efek animasi */
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(-50px);
+        opacity: 0;
+    }
 
-        .modal-content.show {
-            /* Atur transform kembali ke nilai semula */
-            transform: translateY(0);
-            opacity: 1;
-        }
+    .modal-content.show {
+        /* Atur transform kembali ke nilai semula */
+        transform: translateY(0);
+        opacity: 1;
+    }
 
 
-        .close {
-            color: black;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            /* Tambahkan transition untuk efek animasi */
-            transition: color 0.3s ease;
-        }
+    .close {
+        color: black;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        /* Tambahkan transition untuk efek animasi */
+        transition: color 0.3s ease;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-        .errorpage {
-            margin: 0;
-        }
+    .errorpage {
+        margin: 0;
+    }
 
-        .errorpage .danger {
-            color: red;
-            font-size: 48px;
-        }
+    .errorpage .danger {
+        color: red;
+        font-size: 48px;
+    }
 
-        /* Style untuk form */
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-            border-radius: 5px;
-        }
+    /* Style untuk form */
+    input[type=text],
+    input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
 
-        .btn-login {
-            /* background-color: #4CAF50; */
-            background-color: #00A65A;
-            color: white;
-            padding: 7px 10px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
+    .btn-login {
+        /* background-color: #4CAF50; */
+        background-color: #00A65A;
+        color: white;
+        padding: 7px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
 
-        .submit {
-            background-color: #00A65A;
-            color: white;
-            padding: 7px 10px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
-        }
+    .submit {
+        background-color: #00A65A;
+        color: white;
+        padding: 7px 10px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 5px;
+    }
 
-        .submit:hover {
-            background-color: #008D4C;
-        }
+    .submit:hover {
+        background-color: #008D4C;
+    }
 
-        /* CSS untuk tombol login */
-        .btn-login {
-            opacity: 0.8;
-            position: relative;
-            /* Mengatur posisi relatif untuk konten di dalam tombol */
-            /* background-color: #4CAF50; */
-            /* Warna latar belakang tombol */
-            color: white;
-            /* Warna teks tombol */
-            /* padding: 10px 20px; */
-            /* Padding tombol */
-            border: none;
-            /* Tanpa border */
-            /* border-radius: 5px; */
-            /* Border radius */
-            cursor: pointer;
-            /* Kursor pointer saat diarahkan ke tombol */
-            font-size: 14px;
-            /* Ukuran font */
-            overflow: hidden;
-            /* Overflow tersembunyi untuk konten dalam tombol */
-        }
+    /* CSS untuk tombol login */
+    .btn-login {
+        opacity: 0.8;
+        position: relative;
+        /* Mengatur posisi relatif untuk konten di dalam tombol */
+        /* background-color: #4CAF50; */
+        /* Warna latar belakang tombol */
+        color: white;
+        /* Warna teks tombol */
+        /* padding: 10px 20px; */
+        /* Padding tombol */
+        border: none;
+        /* Tanpa border */
+        /* border-radius: 5px; */
+        /* Border radius */
+        cursor: pointer;
+        /* Kursor pointer saat diarahkan ke tombol */
+        font-size: 14px;
+        /* Ukuran font */
+        overflow: hidden;
+        /* Overflow tersembunyi untuk konten dalam tombol */
+    }
 
-        /* Efek hover pada tombol */
-        .btn-login::after {
-            content: '';
-            /* Konten kosong */
-            position: absolute;
-            /* Mengatur posisi absolut untuk elemen tambahan */
-            width: 80%;
-            /* Lebar 100% */
-            height: 3px;
-            /* Tinggi garis */
-            background-color: white;
-            border-radius: 50px;
-            /* Warna garis */
-            bottom: 5px;
-            /* Membuat garis berada di bagian bawah tombol */
-            left: 10px;
-            /* Membuat garis dimulai dari kiri */
-            transform: scaleX(0);
-            /* Skala X nol untuk menyembunyikan garis saat tidak dihover */
-            transition: transform 0.3s ease;
-            /* Transisi untuk transformasi */
-        }
+    /* Efek hover pada tombol */
+    .btn-login::after {
+        content: '';
+        /* Konten kosong */
+        position: absolute;
+        /* Mengatur posisi absolut untuk elemen tambahan */
+        width: 80%;
+        /* Lebar 100% */
+        height: 3px;
+        /* Tinggi garis */
+        background-color: white;
+        border-radius: 50px;
+        /* Warna garis */
+        bottom: 5px;
+        /* Membuat garis berada di bagian bawah tombol */
+        left: 10px;
+        /* Membuat garis dimulai dari kiri */
+        transform: scaleX(0);
+        /* Skala X nol untuk menyembunyikan garis saat tidak dihover */
+        transition: transform 0.3s ease;
+        /* Transisi untuk transformasi */
+    }
 
-        .btn-login:hover::after {
-            opacity: 1;
-            transform: scaleX(1);
-            /* Skala X 1 saat tombol dihover untuk menampilkan garis */
-        }
+    .btn-login:hover::after {
+        opacity: 1;
+        transform: scaleX(1);
+        /* Skala X 1 saat tombol dihover untuk menampilkan garis */
+    }
 
-        .input-login {
-            display: flex;
-            flex-direction: row;
-        }
+    .input-login {
+        display: flex;
+        flex-direction: row;
+    }
 
-        .input-login i {
-            /* border: 1px solid #ccc; */
-            background: #EEC037;
-            width: 40px;
-            height: 45px;
-            border-radius: 3px;
-            position: relative;
-            top: 8px;
-            left: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .input-login i {
+        /* border: 1px solid #ccc; */
+        background: #EEC037;
+        width: 40px;
+        height: 45px;
+        border-radius: 3px;
+        position: relative;
+        top: 8px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .floating {
-            border-top: 0;
-            border-left: 0;
-            border-right: 0;
-            text-decoration: none;
-            font-family: sans-serif;
-            font-size: 14pt;
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            /* background-color: #605ca8; */
-            background-color: #00A65A;
-            color: #fff;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 2px 2px 3px #999;
-            margin-top: 32px;
-        }
+    .floating {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 14pt;
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        /* background-color: #605ca8; */
+        background-color: #00A65A;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        margin-top: 32px;
+    }
 
-        .hamburger {
-            position: fixed;
-            top: 10px;
-            z-index: 999;
-            display: block;
-            width: 25px;
-            height: 25px;
-            margin-left: 15px;
-            background: transparent;
-            border: none;
-        }
+    .hamburger {
+        position: absolute;
+        top: 10px;
+        z-index: 999;
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin-left: 15px;
+        background: transparent;
+        border: none;
+    }
 
-        .hamburger:hover,
-        .hamburger:focus,
-        .hamburger:active {
-            outline: none;
-        }
+    .hamburger:hover,
+    .hamburger:focus,
+    .hamburger:active {
+        outline: none;
+    }
 
-        .hamburger.is-closed:before,
-        .hamburger.is-open:before {
-            content: '';
-            display: block;
-            width: 100px;
-            font-size: 14px;
-            color: #fff;
-            line-height: 32px;
-            text-align: center;
-            opacity: 0;
-            transform: translate3d(0, 0, 0);
-            transition: all .35s ease-in-out;
-            -webkit-transform: translate3d(0, 0, 0);
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transform: translate3d(0, 0, 0);
-            -moz-transition: all .35s ease-in-out;
-            -ms-transform: translate3d(0, 0, 0);
-            -ms-transition: all .35s ease-in-out;
-            -o-transform: translate3d(0, 0, 0);
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed:before,
+    .hamburger.is-open:before {
+        content: '';
+        display: block;
+        width: 100px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 32px;
+        text-align: center;
+        opacity: 0;
+        transform: translate3d(0, 0, 0);
+        transition: all .35s ease-in-out;
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transform: translate3d(0, 0, 0);
+        -moz-transition: all .35s ease-in-out;
+        -ms-transform: translate3d(0, 0, 0);
+        -ms-transition: all .35s ease-in-out;
+        -o-transform: translate3d(0, 0, 0);
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-closed:hover:before,
-        .hamburger.is-open:hover:before {
-            opacity: 1;
-            display: block;
-            transform: translate3d(-100px, 0, 0);
-            transition: all .35s ease-in-out;
-            -webkit-transform: translate3d(-100px, 0, 0);
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transform: translate3d(-100px, 0, 0);
-            -moz-transition: all .35s ease-in-out;
-            -ms-transform: translate3d(-100px, 0, 0);
-            -ms-transition: all .35s ease-in-out;
-            -o-transform: translate3d(-100px, 0, 0);
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed:hover:before,
+    .hamburger.is-open:hover:before {
+        opacity: 1;
+        display: block;
+        transform: translate3d(-100px, 0, 0);
+        transition: all .35s ease-in-out;
+        -webkit-transform: translate3d(-100px, 0, 0);
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transform: translate3d(-100px, 0, 0);
+        -moz-transition: all .35s ease-in-out;
+        -ms-transform: translate3d(-100px, 0, 0);
+        -ms-transition: all .35s ease-in-out;
+        -o-transform: translate3d(-100px, 0, 0);
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-closed .hamb-top,
-        .hamburger.is-closed .hamb-middle,
-        .hamburger.is-closed .hamb-bottom,
-        .hamburger.is-open .hamb-top,
-        .hamburger.is-open .hamb-middle,
-        .hamburger.is-open .hamb-bottom {
-            position: absolute;
-            left: 0;
-            height: 4px;
-            width: 100%;
-        }
+    .hamburger.is-closed .hamb-top,
+    .hamburger.is-closed .hamb-middle,
+    .hamburger.is-closed .hamb-bottom,
+    .hamburger.is-open .hamb-top,
+    .hamburger.is-open .hamb-middle,
+    .hamburger.is-open .hamb-bottom {
+        position: absolute;
+        left: 0;
+        height: 4px;
+        width: 100%;
+    }
 
-        .hamburger.is-closed .hamb-top,
-        .hamburger.is-closed .hamb-middle,
-        .hamburger.is-closed .hamb-bottom,
-        .hamburger.is-open .hamb-top,
-        .hamburger.is-open .hamb-middle,
-        .hamburger.is-open .hamb-bottom {
-            background-color: #fff;
-        }
+    .hamburger.is-closed .hamb-top,
+    .hamburger.is-closed .hamb-middle,
+    .hamburger.is-closed .hamb-bottom,
+    .hamburger.is-open .hamb-top,
+    .hamburger.is-open .hamb-middle,
+    .hamburger.is-open .hamb-bottom {
+        background-color: #fff;
+    }
 
-        .hamburger.is-closed .hamb-top {
-            top: 5px;
-            transition: all .35s ease-in-out;
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transition: all .35s ease-in-out;
-            -ms-transition: all .35s ease-in-out;
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed .hamb-top {
+        top: 5px;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-closed .hamb-middle {
-            top: 50%;
-            margin-top: -2px;
-        }
+    .hamburger.is-closed .hamb-middle {
+        top: 50%;
+        margin-top: -2px;
+    }
 
-        .hamburger.is-closed .hamb-bottom {
-            bottom: 5px;
-            transition: all .35s ease-in-out;
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transition: all .35s ease-in-out;
-            -ms-transition: all .35s ease-in-out;
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed .hamb-bottom {
+        bottom: 5px;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-closed:hover .hamb-top {
-            top: 0;
-            transition: all .35s ease-in-out;
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transition: all .35s ease-in-out;
-            -ms-transition: all .35s ease-in-out;
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed:hover .hamb-top {
+        top: 0;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-closed:hover .hamb-bottom {
-            bottom: 0;
-            transition: all .35s ease-in-out;
-            -webkit-transition: all .35s ease-in-out;
-            -moz-transition: all .35s ease-in-out;
-            -ms-transition: all .35s ease-in-out;
-            -o-transition: all .35s ease-in-out;
-        }
+    .hamburger.is-closed:hover .hamb-bottom {
+        bottom: 0;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+        -moz-transition: all .35s ease-in-out;
+        -ms-transition: all .35s ease-in-out;
+        -o-transition: all .35s ease-in-out;
+    }
 
-        .hamburger.is-open .hamb-top,
-        .hamburger.is-open .hamb-bottom {
-            top: 50%;
-            margin-top: -2px;
-        }
+    .hamburger.is-open .hamb-top,
+    .hamburger.is-open .hamb-bottom {
+        top: 50%;
+        margin-top: -2px;
+    }
 
-        .hamburger.is-open .hamb-top {
-            transform: rotate(45deg);
-            transition: transform .2s cubic-bezier(.73, 1, .28, .08);
-            -webkit-transform: rotate(45deg);
-            -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -moz-transform: rotate(45deg);
-            -moz-transition: -moz-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -ms-transform: rotate(45deg);
-            -ms-transition: -ms-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -o-transform: rotate(45deg);
-            -o-transition: -o-transform .2s cubic-bezier(.73, 1, .28, .08);
-        }
+    .hamburger.is-open .hamb-top {
+        transform: rotate(45deg);
+        transition: transform .2s cubic-bezier(.73, 1, .28, .08);
+        -webkit-transform: rotate(45deg);
+        -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -moz-transform: rotate(45deg);
+        -moz-transition: -moz-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -ms-transform: rotate(45deg);
+        -ms-transition: -ms-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -o-transform: rotate(45deg);
+        -o-transition: -o-transform .2s cubic-bezier(.73, 1, .28, .08);
+    }
 
-        .hamburger.is-open .hamb-middle {
-            display: none;
-        }
+    .hamburger.is-open .hamb-middle {
+        display: none;
+    }
 
-        .hamburger.is-open .hamb-bottom {
-            transform: rotate(-45deg);
-            transition: transform .2s cubic-bezier(.73, 1, .28, .08);
-            -webkit-transform: rotate(-45deg);
-            -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -moz-transform: rotate(-45deg);
-            -moz-transition: -moz-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -ms-transform: rotate(-45deg);
-            -ms-transition: -ms-transform .2s cubic-bezier(.73, 1, .28, .08);
-            -o-transform: rotate(-45deg);
-            -o-transition: -o-transform .2s cubic-bezier(.73, 1, .28, .08);
-        }
+    .hamburger.is-open .hamb-bottom {
+        transform: rotate(-45deg);
+        transition: transform .2s cubic-bezier(.73, 1, .28, .08);
+        -webkit-transform: rotate(-45deg);
+        -webkit-transition: -webkit-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -moz-transform: rotate(-45deg);
+        -moz-transition: -moz-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -ms-transform: rotate(-45deg);
+        -ms-transition: -ms-transform .2s cubic-bezier(.73, 1, .28, .08);
+        -o-transform: rotate(-45deg);
+        -o-transition: -o-transform .2s cubic-bezier(.73, 1, .28, .08);
+    }
 
-        .overlay {
-            position: fixed;
-            display: none;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(250, 250, 250, .8);
-            z-index: 1;
-        }
+    .overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(250, 250, 250, .8);
+        z-index: 1;
+    }
     </style>
 </head>
 
@@ -503,50 +503,50 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         <?php
                         if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             ?>
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="gambar/admin/admin.png" class="user-image" alt="User Image">
-                                    <?php echo ucfirst($_SESSION['username']); ?>
-                                    <span class="hidden-xs">
-                                        <?php echo $user; ?>
-                                    </span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image -->
-                                    <li class="user-header">
-                                        <img src="gambar/admin/admin.png" class="img-circle" alt="User Image">
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="gambar/admin/admin.png" class="user-image" alt="User Image">
+                                <?php echo ucfirst($_SESSION['username']); ?>
+                                <span class="hidden-xs">
+                                    <?php echo $user; ?>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="gambar/admin/admin.png" class="img-circle" alt="User Image">
 
-                                        <p>
-                                            Login sebagai
-                                            <b><?php echo ucfirst($_SESSION['username']); ?></b><br>
-                                            <small><b><?php echo ucfirst($_SESSION['nama_lengkap']); ?></b></small>
-                                            <small>Pakar dari T-corn</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <!-- /.row -->
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a class="btn btn-default btn-flat" <?php if ($module == "tentang")
+                                    <p>
+                                        Login sebagai
+                                        <b><?php echo ucfirst($_SESSION['username']); ?></b><br>
+                                        <small><b><?php echo ucfirst($_SESSION['nama_lengkap']); ?></b></small>
+                                        <small>Pakar dari T-corn</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a class="btn btn-default btn-flat" <?php if ($module == "tentang")
                                                 echo 'class="class="btn btn-default btn-flat active"'; ?>
-                                                href="?module=tentang"><i class="fa-solid fa-file-invoice"></i>
-                                                <span>Tentang</span></a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a class="btn btn-default btn-flat"
-                                                href="JavaScript: confirmIt('Anda yakin akan logout dari aplikasi ?','logout.php','','','','u','n','Self','Self')"
-                                                onMouseOver="self.status = ''; return true"
-                                                onMouseOut="self.status = ''; return true"><i class="fa fa-sign-out"></i>
-                                                <span>Keluar</span></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                                            href="?module=tentang"><i class="fa-solid fa-file-invoice"></i>
+                                            <span>Tentang</span></a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a class="btn btn-default btn-flat"
+                                            href="JavaScript: confirmIt('Anda yakin akan logout dari aplikasi ?','logout.php','','','','u','n','Self','Self')"
+                                            onMouseOver="self.status = ''; return true"
+                                            onMouseOut="self.status = ''; return true"><i class="fa fa-sign-out"></i>
+                                            <span>Keluar</span></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         <?php } else { ?>
-                            <?php
+                        <?php
                             // Tampilan tombol masuk di navbar sesuai status login
                             if (!$isLoggedIn) {
                                 echo '<li class="dropdown messages-menu">
@@ -601,110 +601,110 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </div><!-- ./wrapper -->
 
     <script>
-        // Fungsi untuk membuka modal login
-        function openModal() {
-            var modal = document.getElementById("myModal");
-            var modalContent = modal.querySelector('.modal-content');
-            modal.style.display = "block";
-            setTimeout(function () {
-                modalContent.classList.add('show');
-            }, 10);
+    // Fungsi untuk membuka modal login
+    function openModal() {
+        var modal = document.getElementById("myModal");
+        var modalContent = modal.querySelector('.modal-content');
+        modal.style.display = "block";
+        setTimeout(function() {
+            modalContent.classList.add('show');
+        }, 10);
+    }
+
+    // Fungsi untuk menutup modal login
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        var modalContent = modal.querySelector('.modal-content');
+        modalContent.classList.remove('show');
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 300); // Sesuaikan dengan durasi transisi CSS
+    }
+
+    // Menutup modal saat user mengklik di luar modal
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            closeModal();
         }
+    }
 
-        // Fungsi untuk menutup modal login
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            var modalContent = modal.querySelector('.modal-content');
-            modalContent.classList.remove('show');
-            setTimeout(function () {
-                modal.style.display = "none";
-            }, 300); // Sesuaikan dengan durasi transisi CSS
+    // Fungsi untuk membuka modal error
+    function openErrorModal(message, description) {
+        var modal = document.getElementById("errorModal");
+        var modalContent = modal.querySelector('.modal-content');
+        document.getElementById('errorMessage').innerText = message;
+        document.getElementById('errorDescription').innerText = description;
+        modal.style.display = "block";
+        setTimeout(function() {
+            modalContent.classList.add('show');
+        }, 10);
+    }
+
+    // Fungsi untuk menutup modal error
+    function closeErrorModal() {
+        var modal = document.getElementById("errorModal");
+        var modalContent = modal.querySelector('.modal-content');
+        modalContent.classList.remove('show');
+        setTimeout(function() {
+            modal.style.display = "none";
+        }, 300); // Sesuaikan dengan durasi transisi CSS
+        openModal();
+    }
+
+    // Menutup modal saat user mengklik di luar modal
+    window.onclick = function(event) {
+        var modal = document.getElementById('errorModal');
+        if (event.target == modal) {
+            closeErrorModal();
         }
+    }
 
-        // Menutup modal saat user mengklik di luar modal
-        window.onclick = function (event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+    // Buka modal error jika ada error
+    <?php if (isset($_SESSION['error_message'])): ?>
+    openErrorModal("<?php echo $_SESSION['error_message']; ?>", "<?php echo $_SESSION['error_description']; ?>");
+    <?php unset($_SESSION['error_message']); ?>
+    <?php unset($_SESSION['error_description']); ?>
+    <?php endif; ?>
 
-        // Fungsi untuk membuka modal error
-        function openErrorModal(message, description) {
-            var modal = document.getElementById("errorModal");
-            var modalContent = modal.querySelector('.modal-content');
-            document.getElementById('errorMessage').innerText = message;
-            document.getElementById('errorDescription').innerText = description;
-            modal.style.display = "block";
-            setTimeout(function () {
-                modalContent.classList.add('show');
-            }, 10);
-        }
+    $(document).ready(function() {
+        var trigger = $('.hamburger'),
+            overlay = $('.overlay'),
+            isClosed = false;
 
-        // Fungsi untuk menutup modal error
-        function closeErrorModal() {
-            var modal = document.getElementById("errorModal");
-            var modalContent = modal.querySelector('.modal-content');
-            modalContent.classList.remove('show');
-            setTimeout(function () {
-                modal.style.display = "none";
-            }, 300); // Sesuaikan dengan durasi transisi CSS
-            openModal();
-        }
+        trigger.click(function() {
+            hamburger_cross();
+        });
 
-        // Menutup modal saat user mengklik di luar modal
-        window.onclick = function (event) {
-            var modal = document.getElementById('errorModal');
-            if (event.target == modal) {
-                closeErrorModal();
-            }
-        }
+        function hamburger_cross() {
 
-        // Buka modal error jika ada error
-        <?php if (isset($_SESSION['error_message'])): ?>
-            openErrorModal("<?php echo $_SESSION['error_message']; ?>", "<?php echo $_SESSION['error_description']; ?>");
-            <?php unset($_SESSION['error_message']); ?>
-            <?php unset($_SESSION['error_description']); ?>
-        <?php endif; ?>
-
-        $(document).ready(function () {
-            var trigger = $('.hamburger'),
-                overlay = $('.overlay'),
+            if (isClosed == true) {
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
                 isClosed = false;
-
-            trigger.click(function () {
-                hamburger_cross();
-            });
-
-            function hamburger_cross() {
-
-                if (isClosed == true) {
-                    overlay.hide();
-                    trigger.removeClass('is-open');
-                    trigger.addClass('is-closed');
-                    isClosed = false;
-                } else {
-                    overlay.show();
-                    trigger.removeClass('is-closed');
-                    trigger.addClass('is-open');
-                    isClosed = true;
-                }
-            }
-
-            $('[data-toggle="offcanvas"]').click(function () {
-                $('#wrapper').toggleClass('toggled');
-            });
-        });
-
-
-        document.querySelector('.lorem-btn').addEventListener('click', function () {
-            var loremParagraph = document.getElementById('lorem-paragraph');
-            if (loremParagraph.style.display === 'none') {
-                loremParagraph.style.display = 'block';
             } else {
-                loremParagraph.style.display = 'none';
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
             }
+        }
+
+        $('[data-toggle="offcanvas"]').click(function() {
+            $('#wrapper').toggleClass('toggled');
         });
+    });
+
+
+    document.querySelector('.lorem-btn').addEventListener('click', function() {
+        var loremParagraph = document.getElementById('lorem-paragraph');
+        if (loremParagraph.style.display === 'none') {
+            loremParagraph.style.display = 'block';
+        } else {
+            loremParagraph.style.display = 'none';
+        }
+    });
     </script>
 </body>
 
