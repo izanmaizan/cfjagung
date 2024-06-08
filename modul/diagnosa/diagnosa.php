@@ -333,10 +333,20 @@ switch ($_GET['act']) {
       echo "</table><div class='well well-small'><img class='card-img-top img-bordered-sm' style='float:right; margin-left:15px;' src='" . $gambar . "' height=200><h3>Hasil Identifikasi📖</h3>";
       echo "<div class='callout callout-default'>Jenis busuk tongkol yang diderita jagung adalah <b><h3 class='text text-success'>" . $nmpkt[1] . "</b> / " . round($vlpkt[1] * 100, 2) . " % (" . $vlpkt[1] . ")<br></h3>";
 
+
+
+      // Tampilkan tombol "Detail Perhitungan"
+      echo '<button id="showDetailBtn" class="btn btn-instagram"><i class="fa-solid fa-square-root-variable" style="font-size:20px;"></i> Rincian</button>';
+
+      // Tambahkan div untuk menampilkan detail perhitungan (dengan style display: none)
+      echo '<div id="detailPerhitungan" style="display: none;">';
+      // Tampilkan tabel CF dan proses perhitungan
+      echo '<h2>Detail Perhitungan Certainty Factor (CF)</h2>';
       // Tabel CF
       echo "<table>
-<th width=10%>Kode Gejala</th>
-<th width=10%>Kode Penyakit</th>
+<th width=2%>Kode Penyakit</th>
+<th width=15%>Nama Penyakit</th>
+<th width=5%>Kode Gejala</th>
 <th width=2%>MB</th>
 <th width=2%>MD</th>
 <th width=10%>CF Rule</th>
@@ -347,8 +357,12 @@ switch ($_GET['act']) {
       foreach ($argejala as $key => $value) {
         $ig++;
         $gejala = $key;
-        $sql_cf = mysqli_query($conn, "SELECT kode_penyakit, mb, md FROM basis_pengetahuan WHERE kode_gejala = '$key'");
+        $sql_cf = mysqli_query($conn, "SELECT bp.kode_penyakit, bp.mb, bp.md, py.nama_penyakit 
+                              FROM basis_pengetahuan bp
+                              INNER JOIN penyakit py ON bp.kode_penyakit = py.kode_penyakit
+                              WHERE bp.kode_gejala = '$key'");
         while ($r_cf = mysqli_fetch_array($sql_cf)) {
+          $nama_penyakit = $r_cf['nama_penyakit'];
           $kd_penyakit = $r_cf['kode_penyakit'];
           $mb = $r_cf['mb'];
           $md = $r_cf['md'];
@@ -356,8 +370,9 @@ switch ($_GET['act']) {
           $cf_user = $arbobot[$value];
           $cf_final = $cf * $cf_user; // Rumus perhitungan CF
           $cf_values[] = $cf_final;
-          echo '<tr><td>G' . str_pad($gejala, 3, '0', STR_PAD_LEFT) . '</td>';
-          echo '<td>' . $kd_penyakit . '</td>';
+          echo '<tr><td>' . $kd_penyakit . '</td>';
+          echo '<td>' . $nama_penyakit . '</td>';
+          echo '<td>G' . str_pad($gejala, 3, '0', STR_PAD_LEFT) . '</td>';
           echo '<td>' . $mb . '</td>';
           echo '<td>' . $md . '</td>';
           echo '<td>' . round($cf, 2) . '</td>';
@@ -373,6 +388,7 @@ switch ($_GET['act']) {
         $bobot_data[] = $cf_user;
       }
       echo "</table>";
+
       ?>
 
 <h1>Proses Perhitungan Certainty Factor (CF)</h1>
@@ -481,6 +497,18 @@ switch ($_GET['act']) {
         }
       }
       echo "</div>";
+      echo "</div>";
+
+      echo '<script>
+            document.getElementById("showDetailBtn").addEventListener("click", function() {
+              var detailPerhitungan = document.getElementById("detailPerhitungan");
+              if (detailPerhitungan.style.display === "none") {
+                detailPerhitungan.style.display = "block";
+              } else {
+                detailPerhitungan.style.display = "none";
+              }
+            });
+          </script>';
 
 
 
