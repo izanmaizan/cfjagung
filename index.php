@@ -479,35 +479,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         </div>
     </div>
 
-
-    <!-- Modal Login 
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="loginModalLabel">Login</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="login.php" method="POST">
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
@@ -723,6 +694,16 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             $('[data-toggle="offcanvas"]').click(function () {
                 $('#wrapper').toggleClass('toggled');
             });
+        });
+
+
+        document.querySelector('.lorem-btn').addEventListener('click', function () {
+            var loremParagraph = document.getElementById('lorem-paragraph');
+            if (loremParagraph.style.display === 'none') {
+                loremParagraph.style.display = 'block';
+            } else {
+                loremParagraph.style.display = 'none';
+            }
         });
     </script>
 </body>
