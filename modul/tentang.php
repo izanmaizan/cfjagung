@@ -7,152 +7,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .container {
-            width: 100%;
-            max-width: 1200px;
-        }
+    .container {
+        width: 100%;
+        max-width: 1200px;
+    }
 
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-        }
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
 
-        .header {
-            padding-bottom: 5px;
-            border-bottom: 1px solid #ddd;
-        }
+    .header {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+    }
 
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
+    .profile-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
 
-        .title {
-            font-size: 5rem;
-            font-weight: 700;
-            color: #333;
-            margin-top: 0;
-        }
+    .title {
+        font-size: 5rem;
+        font-weight: 700;
+        color: #333;
+        margin-top: 0;
+    }
 
-        .description {
-            font-size: 1.4rem;
-            color: #555;
-            text-align: left;
-            margin: 20px 0;
-        }
+    .description {
+        font-size: 1.4rem;
+        color: #555;
+        text-align: left;
+        margin: 20px 0;
+    }
 
-        .profiles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
+    .profiles {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-        .profile {
-            margin-top: 5px;
-            position: relative;
-            text-align: center;
-        }
+    .profile {
+        margin-top: 5px;
+        position: relative;
+        text-align: center;
+    }
 
-        .profile-pakar {
-            top: -25px;
-        }
+    .profile-pakar {
+        top: -25px;
+    }
 
-        .profile-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            text-align: center;
-            width: 150px;
-            height: 240px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+    .profile-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        text-align: center;
+        width: 150px;
+        height: 240px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
 
-        .profile-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
+    .profile-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
 
-        .profile-card img {
-            width: 100%;
-            border-radius: 10px 10px 0 10px;
-        }
+    .profile-card img {
+        width: 100%;
+        border-radius: 10px 10px 0 10px;
+    }
 
-        .profile-card h2 {
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-size: 1.8rem;
-            color: #333;
-            font-weight: 600;
-        }
+    .profile-card h2 {
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 1.8rem;
+        color: #333;
+        font-weight: 600;
+    }
 
-        .profile-card p {
-            font-size: 1.2rem;
-            color: #777;
-        }
+    .profile-card p {
+        font-size: 1.2rem;
+        color: #777;
+    }
 
-        .dosen-card {
-            background-color: #00a65a;
-            border-radius: 10px;
-            padding: 20px;
-            width: 100%;
-            max-width: 250px;
-            color: #fff;
-            text-align: center;
-        }
+    .dosen-card {
+        background-color: #00a65a;
+        border-radius: 10px;
+        padding: 20px;
+        width: 100%;
+        max-width: 250px;
+        color: #fff;
+        text-align: center;
+    }
 
-        .dosen-card h2 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin: 0;
-        }
+    .dosen-card h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0;
+    }
 
-        .dosen-card p {
-            font-size: 1.2rem;
-            margin: 5px 0 0;
-        }
+    .dosen-card p {
+        font-size: 1.2rem;
+        margin: 5px 0 0;
+    }
 
-        .logos {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
+    .logos {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
 
-        .logos img {
-            width: 200px;
-        }
+    .logos img {
+        width: 200px;
+    }
 
-        footer h2 {
-            font-size: 1.8rem;
-            color: #777;
-            margin: 5px 0;
-        }
+    footer h2 {
+        font-size: 1.8rem;
+        color: #777;
+        margin: 5px 0;
+    }
 
-        footer .link {
-            color: #00a65a;
-            text-decoration: none;
-        }
+    footer .link {
+        color: #00a65a;
+        text-decoration: none;
+    }
 
-        .linkedin {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            top: 120px;
-            left: 40px;
-        }
+    .linkedin {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 120px;
+        left: 40px;
+    }
 
-        .oversize {
-            font-size: 18px;
-        }
+    .oversize {
+        font-size: 18px;
+    }
     </style>
 </head>
 
@@ -207,7 +207,7 @@
                     </a>
                 </div>
                 <div class="profile">
-                    <a href="https://www.linkedin.com/in/maizan-insani-akbar" target="_blank">
+                    <a href="https://www.linkedin.com/in/izanmaizan/" target="_blank">
                         <div class="profile-card">
                             <div class="">
                                 <img src="https://media.licdn.com/dms/image/D5603AQFsbQRxj6Koyg/profile-displayphoto-shrink_800_800/0/1704449524519?e=1723075200&v=beta&t=8Vu7AaH6Au4sAjG1rMOya0SbilgFgZPP2LTz7hG7Ruc"
